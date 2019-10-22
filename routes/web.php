@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/push', function () {
     return view('welcome');
 });
+
+Route::resource('/', 'HomeController');
