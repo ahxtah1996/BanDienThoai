@@ -11,8 +11,7 @@
 |
 */
 
-Route::get('/push', function () {
-    return view('welcome');
-});
-
 Route::resource('/', 'HomeController');
+
+// restFul category
+Route::resource('category', 'CategoryController');
