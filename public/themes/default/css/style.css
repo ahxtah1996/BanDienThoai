@@ -2297,3 +2297,6 @@ footer {
 }
 
 /* end code mới */
+a.smooth {
+  text-transform: capitalize;
+}
