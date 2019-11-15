@@ -27,9 +27,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // View::share('abc', 1);
         View::composer(
-            'commons.user-bar', 'App\Http\ViewComposers\CategoryComposer'
+            ['commons.user-bar', 'user.index'], 'App\Http\ViewComposers\CategoryComposer'
         );
     }
 }

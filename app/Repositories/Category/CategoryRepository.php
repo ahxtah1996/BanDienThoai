@@ -47,7 +47,35 @@ class CategoryRepository extends RepositoryAbstract implements CategoryRepositor
                 $array[$value->parent_category_id]['chil'][$value->id]['value'] = $value->categoryDetail;
             }
         } 
-        // dd($array);
+
         return $array;
+    }
+
+    /**
+     * 
+     */
+    public function parent_category()
+    {
+        return $this->model->whereNull('parent_category_id');
+    }
+
+    /**
+     * 
+     */
+    public function home($categories)
+    {
+        $arrFilter = [];
+        foreach ($categories as $key => $category) {
+            $arrFilter[$key]['id'] = $category->id;
+            $arrFilter[$key]['description'] = $category->description;
+            $arrFilter[$key]['img_home'] = $category->img_home;
+            $arrCategory = Category::where('parent_category_id', $category->id)->get();
+            if (count($arrCategory) == 0) {
+                $arrCategory = null;
+            } 
+            $arrFilter[$key]['category'] = $arrCategory;
+        }
+
+        return $arrFilter;
     }
 }

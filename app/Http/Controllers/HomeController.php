@@ -3,9 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\Category\CategoryRepositoryInterface;
 
 class HomeController extends Controller
 {
+    /**
+     * @var App\Repositories\Category\CategoryRepository
+     */
+    private $categoryRepository;
+
+    /**
+     * Construct
+     *
+     * @return void
+     */
+    public function __construct(
+        CategoryRepositoryInterface $categoryRepository
+    )
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +31,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user.index');
+        $categories = $this->categoryRepository->parent_category()->get();
+        $categories = $this->categoryRepository->home($categories);
+
+        return view('user.index', compact('categories'));
     }
 
     /**
