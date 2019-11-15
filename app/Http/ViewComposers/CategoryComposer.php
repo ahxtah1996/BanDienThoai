@@ -36,6 +36,6 @@ class CategoryComposer
     {
         $category = $this->category->all();
         $category = $this->category->sortToBar($category);
-        $view->with('categories', $category);
+        $view->with('categoriesBar', $category);
     }
 }

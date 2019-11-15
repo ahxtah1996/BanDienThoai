@@ -7,37 +7,37 @@
                     <a class="menu-title hidden-dk" data-toggle="collapse" href="#ct">Danh mục sản phẩm</a>
                     <div class="main-nav collapse" id="ct">
                         <ul>
-                            @foreach ($categories as $category)
+                            @foreach ($categoriesBar as $category)
                                 <li>
-                                <a class="smooth" href="/collections?id={{ $category['id'] }}" title="">
-                                    <div class="t-icon">
-                                        <img src="/img/icon/{{ $category['icon'] }}" alt="">
-                                        <img src="/img/icon/{{ $category['icon'] }}" alt="">
-                                    </div>
-                                    <span>{{ $category['name'] }}</span>
-                                </a>
-                                <div class="submenu">
-                                    <div class="row item">
-                                        @if (!empty($category['chil']))
+                                    <a class="smooth" href="/collections?id={{ $category['id'] }}" title="">
+                                        <div class="t-icon">
+                                            <img src="/img/icon/{{ $category['icon'] }}" alt="">
+                                            <img src="/img/icon/{{ $category['icon'] }}" alt="">
+                                        </div>
+                                        <span>{{ $category['name'] }}</span>
+                                    </a>
+                                    <div class="submenu">
+                                        <div class="row item">
                                             @if (!empty($category['chil']))
-                                                @foreach ($category['chil'] as $data)
-                                                    <div class="col-lg-3">
-                                                        <p class="groupdrop-title">{{ $data['name'] }}</p>
-                                                        @if (!empty($data['value']))
-                                                            <ul>
-                                                                @foreach ($data['value'] as $categoryDetail)
-                                                                    <li><a href="/collections?id={{ $categoryDetail->id }}" class="smooth" title="">{{ $categoryDetail->name }}</a></li>
-                                                                @endforeach
-                                                            </ul>
-                                                        @endif
-                                                    </div>
-                                                @endforeach
+                                                @if (!empty($category['chil']))
+                                                    @foreach ($category['chil'] as $data)
+                                                        <div class="col-lg-3">
+                                                            <p class="groupdrop-title">{{ $data['name'] }}</p>
+                                                            @if (!empty($data['value']))
+                                                                <ul>
+                                                                    @foreach ($data['value'] as $categoryDetail)
+                                                                        <li><a href="/collections?id={{ $categoryDetail->id }}" class="smooth" title="">{{ $categoryDetail->name }}</a></li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            @endif
+                                                        </div>
+                                                    @endforeach
+                                                @endif
                                             @endif
-                                        @endif
-                                        <img class="groupdrop-banner-pos" src="/img/banner/{{ $category['background'] }}" alt="">
+                                            <img class="groupdrop-banner-pos" src="/img/banner/{{ $category['background'] }}" alt="">
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
                             @endforeach
                         </ul>
                     </div>

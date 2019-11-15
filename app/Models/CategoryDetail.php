@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CategoryDetail extends Model
 {
-        /**
+    /**
      * The attributes name of table.
      *
      * @var string
@@ -51,4 +51,12 @@ class CategoryDetail extends Model
     {
         return $this->belongsTo('App\Models\Category');
     }
+
+    /**
+     * relationship with categories
+     */
+    public function products()
+    {
+        return $this->hasMany('App\Models\Product');
+    }    
 }
