@@ -15,3 +15,10 @@ Route::resource('/', 'HomeController');
 
 // restFul category
 Route::resource('category', 'CategoryController');
+
+Route::get('contact', 'CategoryController@contact');
+Route::get('service', 'CategoryController@service');
+Route::get('introduce', 'CategoryController@introduce');
+Route::get('guarantee', 'CategoryController@guarantee');
+
+Route::resource('product', 'ProductController');

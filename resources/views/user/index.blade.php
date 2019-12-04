@@ -133,7 +133,7 @@
                                     @foreach ($products->products as $key => $product)
                                         <div class="col-lg-3 col-sm-4 col-xs-6 wow fadeInUp" data-wow-delay="0.1s">
                                             <div class="product v2">
-                                                <a class="img hv-scale" href="" title="">
+                                                <a class="img hv-scale" href="{{ route('product.show', ['product' => $product->id]) }}" title="">
                                                     <img src="/img/iphone/11-pro/iphone1.png" alt="" title="" />
                                                 </a>
                                                 <div class="ct">

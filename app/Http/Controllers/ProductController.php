@@ -3,15 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\Category\CategoryRepositoryInterface;
+use App\Models\Product;
 
-class CategoryController extends Controller
+class ProductController extends Controller
 {
-
-    /**
-     * @var App\Repositories\Category\ProductRepository
-     */
-
     /**
      * Display a listing of the resource.
      *
@@ -51,7 +46,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        return view('user.product.detail', compact('product'));
     }
 
     /**
@@ -86,22 +83,5 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function contact()
-    {
-        return view('user.contact');
-    }
-    public function service()
-    {
-        return view('user.service');
-    }
-    public function introduce()
-    {
-        return view('user.introduce');
-    }
-    public function guarantee()
-    {
-        return view('user.guarantee');
     }
 }

@@ -54,13 +54,13 @@
                                         <a href="/" class="smooth" title="">Trang chủ</a>
                                     </li>
                                     <li class="sub ">
-                                        <a href="/pages?id=1" class="smooth" title="">Giới thiệu</a>
+                                        <a href="/introduce" class="smooth" title="">Giới thiệu</a>
                                     </li>
                                     <li class="sub ">
-                                        <a href="/pages?id=2" class="smooth" title="">Bảo hành</a>
+                                        <a href="/guarantee" class="smooth" title="">Bảo hành</a>
                                     </li>
                                     <li class="sub ">
-                                        <a href="/blogs?id=2" class="smooth" title="">Dịch vụ</a>
+                                        <a href="/service" class="smooth" title="">Dịch vụ</a>
                                     </li>
                                     <li class="sub ">
                                         <a href="/contact" class="smooth" title="">Liên hệ</a>
