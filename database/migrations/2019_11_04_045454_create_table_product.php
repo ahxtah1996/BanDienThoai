@@ -18,8 +18,8 @@ class CreateTableProduct extends Migration
             $table->integer('category_detail_id');
             $table->string('name');
             $table->decimal('price', 18, 2);
-            $table->string('description');
-            $table->text('detail');
+            $table->string('img');
+            $table->text('description');
             $table->integer('status');
             $table->timestamps();
         });
