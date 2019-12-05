@@ -17,7 +17,7 @@ class CategoryDetailTableSeeder extends Seeder
             0 =>
             array (
                 'id' => 1,
-                'category_id' => 2,
+                'category_id' => 4,
                 'name' => 'iphone new',
                 'status' => 1,
                 'created_at' => '2019-10-18 02:55:38',
@@ -26,7 +26,7 @@ class CategoryDetailTableSeeder extends Seeder
             1 =>
             array (
                 'id' => 2,
-                'category_id' => 2,
+                'category_id' => 4,
                 'name' => 'iphone cũ 99%',
                 'status' => 1,
                 'created_at' => '2019-10-18 02:55:38',
@@ -35,8 +35,8 @@ class CategoryDetailTableSeeder extends Seeder
             2 =>
             array (
                 'id' => 3,
-                'category_id' => 5,
-                'name' => 'Macbook air 2019',
+                'category_id' => 3,
+                'name' => 'Ipad air 2019',
                 'status' => 1,
                 'created_at' => '2019-10-18 02:55:38',
                 'updated_at' => '2019-10-18 02:57:17',
@@ -44,8 +44,8 @@ class CategoryDetailTableSeeder extends Seeder
             3 =>
             array (
                 'id' => 4,
-                'category_id' => 5,
-                'name' => 'Macbook pro 2019',
+                'category_id' => 3,
+                'name' => 'Ipad pro 2019',
                 'status' => 1,
                 'created_at' => '2019-10-18 02:55:38',
                 'updated_at' => '2019-10-18 02:57:17',
@@ -53,8 +53,8 @@ class CategoryDetailTableSeeder extends Seeder
             4 =>
             array (
                 'id' => 5,
-                'category_id' => 6,
-                'name' => 'the new ',
+                'category_id' => 5,
+                'name' => 'Iwatch 5',
                 'status' => 1,
                 'created_at' => '2019-10-18 02:55:38',
                 'updated_at' => '2019-10-18 02:57:17',
@@ -62,8 +62,8 @@ class CategoryDetailTableSeeder extends Seeder
             5 =>
             array (
                 'id' => 6,
-                'category_id' => 6,
-                'name' => 'asdasd',
+                'category_id' => 7,
+                'name' => 'Máy tính bảng',
                 'status' => 1,
                 'created_at' => '2019-10-18 02:55:38',
                 'updated_at' => '2019-10-18 02:57:17',
@@ -71,8 +71,17 @@ class CategoryDetailTableSeeder extends Seeder
             6 =>
             array (
                 'id' => 7,
-                'category_id' => 6,
-                'name' => 'asdasdasd',
+                'category_id' => 7,
+                'name' => 'Điện thoại',
+                'status' => 1,
+                'created_at' => '2019-10-18 02:55:38',
+                'updated_at' => '2019-10-18 02:57:17',
+            ),
+            7 =>
+            array (
+                'id' => 8,
+                'category_id' => 8,
+                'name' => 'Xách tay 100%',
                 'status' => 1,
                 'created_at' => '2019-10-18 02:55:38',
                 'updated_at' => '2019-10-18 02:57:17',
