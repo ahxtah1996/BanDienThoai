@@ -20,6 +20,7 @@ class CreateTableCategories extends Migration
             $table->string('icon')->nullable();
             $table->string('background')->nullable();
             $table->integer('status');
+            $table->integer('type');
             $table->timestamps();
         });
     }
