@@ -149,6 +149,7 @@
     margin-bottom: 31px;
     margin-top: 2px; }
     .pcate-title span {
+      text-transform: capitalize;
       display: inline-block;
       vertical-align: middle;
       margin-bottom: -2px;

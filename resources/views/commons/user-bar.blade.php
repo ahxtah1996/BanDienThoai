@@ -9,7 +9,7 @@
                         <ul>
                             @foreach ($categoriesBar as $category)
                                 <li>
-                                    <a class="smooth" href="/collections?id={{ $category['id'] }}" title="">
+                                    <a class="smooth" href="{{ route('product.index', ['id' => $category['id']]) }}" title="">
                                         <div class="t-icon">
                                             <img src="/img/icon/{{ $category['icon'] }}" alt="">
                                             <img src="/img/icon/{{ $category['icon'] }}" alt="">
@@ -26,7 +26,7 @@
                                                             @if (!empty($data['value']))
                                                                 <ul>
                                                                     @foreach ($data['value'] as $categoryDetail)
-                                                                        <li><a href="/collections?id={{ $categoryDetail->id }}" class="smooth" title="">{{ $categoryDetail->name }}</a></li>
+                                                                        <li><a href="/collections/{{ $categoryDetail->id }}" class="smooth" title="">{{ $categoryDetail->name }}</a></li>
                                                                     @endforeach
                                                                 </ul>
                                                             @endif

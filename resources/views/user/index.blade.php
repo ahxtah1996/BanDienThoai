@@ -9,7 +9,7 @@
                     <ul>
                         @foreach ($categoriesBar as $category)
                             <li>
-                                <a class="smooth" href="/collections?id={{ $category['id'] }}" title="">
+                                <a class="smooth" href="/collections/{{ $category['id'] }}" title="">
                                     <div class="t-icon">
                                         <img src="/img/icon/{{ $category['icon'] }}" alt="">
                                         <img src="/img/icon/{{ $category['icon'] }}" alt="">
@@ -26,7 +26,7 @@
                                                         @if (!empty($data['value']))
                                                             <ul>
                                                                 @foreach ($data['value'] as $categoryDetail)
-                                                                    <li><a href="/collections?id={{ $categoryDetail->id }}" class="smooth" title="">{{ $categoryDetail->name }}</a></li>
+                                                                    <li><a href="{{ route('product.index', ['id' => $categoryDetail->id]) }}" class="smooth" title="">{{ $categoryDetail->name }}</a></li>
                                                                 @endforeach
                                                             </ul>
                                                         @endif
@@ -115,7 +115,7 @@
                         <h2 class="title">{{ $category['description'] }}</h2>
                     </div>
                     <div class="cell text-right">
-                        <a class="smooth more" href="/collections?id={{ $category['id'] }}" title="">Xem tất cả  >></a>
+                        <a class="smooth more" href="{{ route('product.index', ['id' => $category['id']]) }}" title="">Xem tất cả  >></a>
                     </div>
                 </div>
             </div>
@@ -134,11 +134,11 @@
                                         <div class="col-lg-3 col-sm-4 col-xs-6 wow fadeInUp" data-wow-delay="0.1s">
                                             <div class="product v2">
                                                 <a class="img hv-scale" href="{{ route('product.show', ['product' => $product->id]) }}" title="">
-                                                    <img src="/img/iphone/11-pro/iphone1.png" alt="" title="" />
+                                                    <img src="/img/products/{{ $product->img }}" alt="" title="" />
                                                 </a>
                                                 <div class="ct">
                                                     <h3 class="title"><a class="smooth" href="" title="">{{ $product->name }}</a></h3>
-                                                    <div class="price">{{ number_format($product->price, 0, "," ,".") }} ₫ </div>
+                                                    <div class="price">{{ number_format($product->price, '0', '', '.') }} ₫ </div>
                                                 </div>
                                             </div>
                                         </div>
