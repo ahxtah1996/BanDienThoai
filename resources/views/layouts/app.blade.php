@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Phone Store">
 
-    <link rel="stylesheet" href="/backend/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="/backend/css/plugins.css">
-    <link rel="stylesheet" href="/assets/vendor/toastr/toastr.min.css">
-    <link rel="stylesheet" href="/assets/vendor/sweetalert2/sweetalert2.min.css">
-    <link rel="stylesheet" href="/assets/vendor/flag/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/css/flag-icon.min.css">
     <link rel="icon" href="/storage/logo/logo-duc-anh.png">
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
@@ -46,12 +46,12 @@
     </a>
 
     @include('commons.user-footer')
-    <script src="/assets/vendor/jquery.min.js"></script>
-    <script src="/assets/vendor/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="/assets/vendor/plugins.js"></script>
-    <script src="/assets/vendor/toastr/toastr.min.js"></script>
-    <script src="/assets/vendor/sweetalert2/sweetalert2.min.js"></script>
-    <script src="/assets/vendor/ajaxform/jquery.form.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
     <script src="/assets/js/language/vi.js"  ></script>
     <script src="/assets/js/main.js"></script>    <script src="/themes/default/js/wow.js" defer></script>
     <script src="/themes/default/js/slick.min.js" defer></script>
