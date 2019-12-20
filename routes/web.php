@@ -24,7 +24,7 @@ Route::get('service', 'CategoryController@service');
 Route::get('introduce', 'CategoryController@introduce');
 Route::get('guarantee', 'CategoryController@guarantee');
 
-Route::resource('product', 'ProductController');
+Route::resource('/product', 'ProductController');
 
 Route::get('collections/{id}', 'ProductController@collections');
 
@@ -32,9 +32,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin', 'AdminHomeController@index')->name('admin-home');
-
-Route::resource('/admin/product', 'Admin\ProductController');
-Route::get('getCategoryChild', 'Admin\ProductController@getCategoryChild')->name('getCategoryChild');
-Route::get('getCategoryType', 'Admin\ProductController@getCategoryType')->name('getCategoryType');
->>>>>>> b779fa9b2d8fa92795d7818bd31381a1dbe4aefc
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'], () => {
+    Route::get('/', 'AdminHomeController@index')->name('admin-home');
+    Route::resource('product', 'ProductController');
+    Route::get('getCategoryChild', 'ProductController@getCategoryChild')->name('getCategoryChild');
+    Route::get('getCategoryType', 'Product`Controller@getCategoryType')->name('getCategoryType');
+});
