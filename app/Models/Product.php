@@ -20,8 +20,8 @@ class Product extends Model
      */
     protected $guarded = [
         'id',
-        'created_at',
-        'updated_at'
+        // 'created_at',
+        // 'updated_at'
     ];
 
     /**
@@ -40,7 +40,7 @@ class Product extends Model
      * @var array
      */
     protected $hidden = [
-        'created_at',
+        // 'created_at',
         'updated_at'
     ];
 }

@@ -25,10 +25,16 @@ Route::get('introduce', 'CategoryController@introduce');
 Route::get('guarantee', 'CategoryController@guarantee');
 
 Route::resource('product', 'ProductController');
+
 Route::get('collections/{id}', 'ProductController@collections');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/admin', 'AdminController');
+Route::get('/admin', 'AdminHomeController@index')->name('admin-home');
+
+Route::resource('/admin/product', 'Admin\ProductController');
+Route::get('getCategoryChild', 'Admin\ProductController@getCategoryChild')->name('getCategoryChild');
+Route::get('getCategoryType', 'Admin\ProductController@getCategoryType')->name('getCategoryType');
+>>>>>>> b779fa9b2d8fa92795d7818bd31381a1dbe4aefc
