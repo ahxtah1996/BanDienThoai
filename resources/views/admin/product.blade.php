@@ -117,7 +117,7 @@
     var table = $('.data-table').DataTable({
         // processing: true,
         // serverSide: true,
-        ajax: "{{ route('product.index') }}",
+        ajax: "{{ route('mn-product.index') }}",
         columns: [
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
@@ -134,7 +134,7 @@
     });
     $('body').on('click', '.editRoom', function () {
         var id = $(this).data('id');
-        // $.get("{{ route('product.index') }}" +'/' + room_id + '/edit', function (data) {
+        // $.get("{{ route('mn-product.index') }}" +'/' + room_id + '/edit', function (data) {
             // $('#modelHeading').html("Sửa thông tin sản phẩm");
             // $('#saveBtn').val("edit-room");
             // $('#ajaxModel').modal('show');
@@ -150,7 +150,7 @@
         $(this).html('{{ __('label.sending') }}');
         $.ajax({
             data: $('#roomForm').serialize(),
-            url: "{{ route('product.store') }}",
+            url: "{{ route('mn-product.store') }}",
             type: "POST",
             dataType: 'json',
             success: function (data) {
@@ -171,7 +171,7 @@
         {
             $.ajax({
                 type: "DELETE",
-                url: "{{ route('product.store') }}" + '/' + room_id,
+                url: "{{ route('mn-product.store') }}" + '/' + room_id,
                 success: function (data) {
                     table.draw();
                     document.getElementById("mess").innerHTML = data.success;

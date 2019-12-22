@@ -1,7 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-
+<div class="banner">
+    <img src="{{ asset('/img/banner/applebannergray.png') }}" alt="" title="">
+    <div class="breadcrumbs">
+        <div class="container">
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li><a href="#">Dịch vụ</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 <div class="container">
         <div class="row">
             <div class="list-post col-md-4">

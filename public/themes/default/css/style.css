@@ -960,6 +960,7 @@ header {
       margin-top: -8px;
       right: 14px; }
   .search-fr select {
+    text-transform: capitalize;
     background: #272727;
     width: 100%;
     border: none;

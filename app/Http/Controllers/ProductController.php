@@ -114,4 +114,20 @@ class ProductController extends Controller
 
         return view('user.product.collection', compact('category', 'products'));
     }
+
+    public function search(Request $request)
+    {
+        if ($request->q != '') {
+            $searchValues = preg_split('/\s+/', $request->q, -1, PREG_SPLIT_NO_EMPTY); 
+            $products = Product::where(function ($q) use ($searchValues) {
+                foreach ($searchValues as $value) {
+                    $q->orWhere('name', 'like', "%{$value}%");
+                }
+            })->get();
+        } else {
+            $products = Product::where('name', 'like', '%'.$request->q.'%')->get();
+        }
+        
+        return view('user.search', compact('products'));
+    }
 }

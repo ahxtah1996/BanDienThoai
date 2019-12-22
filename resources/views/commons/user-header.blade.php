@@ -10,18 +10,14 @@
                 <div class="col-lg-6 col-md-9 col-sm-7 col-xs-12 search-form">
                     <span class="action search hidden-md hidden-lg"><i class="fa fa-search"></i></span>
                     <div class=" action-control-search">
-                        <form class="search-fr" action="" method="get">
+                        <form class="search-fr" action="{{ asset('product-search') }}" method="get">
                             <input type="text" name="q" placeholder="Tìm sản phẩm...">
                             <div class="select" name="category">
                                 <select class="non-select2">
                                     <option>Tất cả</option>
-                                    <option>Iphone</option>
-                                    <option>Ipad</option>
-                                    <option>Macbook</option>
-                                    <option>Apple Watch</option>
-                                    <option>Samsung</option>
-                                    <option>Kho Máy Cũ</option>
-                                    <option>Phụ kiện</option>
+                                    @foreach ($categoriesBar as $row)
+                                        <option>{{ $row['name'] }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <button type="submit"><i class="fa fa-search"></i></button>
@@ -33,10 +29,10 @@
                     <div class="h-ctrl">
                         
                         <div class="h-cart">
-                            <a href="" title="">
+                            <a href="{{ route('cart.index') }}" title="">
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                 <span>Giỏ hàng</span>
-                                <em class="count_cart">0</em>
+                                <em class="count_cart">{{ \Cart::count() }}</em>
                             </a>
                         </div>
                     </div>

@@ -23,6 +23,9 @@ Route::get('contact', 'CategoryController@contact');
 Route::get('service', 'CategoryController@service');
 Route::get('introduce', 'CategoryController@introduce');
 Route::get('guarantee', 'CategoryController@guarantee');
+Route::resource('/cart', 'CartController');
+Route::get('/scart/ajax', 'CartController@ajax');
+Route::get('product-search', 'ProductController@search');
 
 Route::resource('/product', 'ProductController');
 
@@ -30,11 +33,11 @@ Route::get('collections/{id}', 'ProductController@collections');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'], () => {
+Route::group(['namespace' => 'Admin', 'prefix' => 'manager', 'middleware' => 'admin'], function() {
     Route::get('/', 'AdminHomeController@index')->name('admin-home');
-    Route::resource('product', 'ProductController');
+    Route::resource('mn-product', 'ProductController');
+    Route::resource('mn-category', 'CategoryController');
+    Route::get('mn-categoryChild-index', 'CategoryController@categoryChild')->name('mn-categoryChild-index');
     Route::get('getCategoryChild', 'ProductController@getCategoryChild')->name('getCategoryChild');
-    Route::get('getCategoryType', 'Product`Controller@getCategoryType')->name('getCategoryType');
+    Route::get('getCategoryType', 'ProductController@getCategoryType')->name('getCategoryType');
 });

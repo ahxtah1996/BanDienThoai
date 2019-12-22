@@ -18,7 +18,7 @@ class ProductTableSeeder extends Seeder
             [
                 'id' => 1,
                 'category_detail_id' => 1,
-                'name' => 'iPhone 11 Pro Max 64GB',
+                'name' => 'iPhone 11 Pro Max 64GB1',
                 'price' => 33990000,
                 'img' => 'icon-phone.png',
                 'description' => 'Chiếc iPhone mạnh mẽ nhất, lớn nhất, thời lượng pin tốt nhất đã xuất hiện. iPhone 11 Pro Max chắc chắn là chiếc điện thoại mà ai cũng ao ước khi sở hữu những tính năng xuất sắc nhất, đặc biệt là camera và pin.',
@@ -30,7 +30,7 @@ class ProductTableSeeder extends Seeder
             [
                 'id' => 2,
                 'category_detail_id' => 1,
-                'name' => 'iPhone 11 Pro Max 64GB',
+                'name' => 'iPhone 11 Pro Max 64GB2',
                 'price' => 33990000,
                 'img' => 'icon-phone.png',
                 'description' => 'Chiếc iPhone mạnh mẽ nhất, lớn nhất, thời lượng pin tốt nhất đã xuất hiện. iPhone 11 Pro Max chắc chắn là chiếc điện thoại mà ai cũng ao ước khi sở hữu những tính năng xuất sắc nhất, đặc biệt là camera và pin.',
@@ -42,7 +42,7 @@ class ProductTableSeeder extends Seeder
             [
                 'id' => 3,
                 'category_detail_id' => 2,
-                'name' => 'iPhone 11 Pro Max 64GB',
+                'name' => 'iPhone 11 Pro Max 64GB3',
                 'price' => 33990000,
                 'img' => 'icon-phone.png',
                 'description' => 'Chiếc iPhone mạnh mẽ nhất, lớn nhất, thời lượng pin tốt nhất đã xuất hiện. iPhone 11 Pro Max chắc chắn là chiếc điện thoại mà ai cũng ao ước khi sở hữu những tính năng xuất sắc nhất, đặc biệt là camera và pin.',
@@ -66,7 +66,7 @@ class ProductTableSeeder extends Seeder
             [
                 'id' => 5,
                 'category_detail_id' => 3,
-                'name' => 'iPhone 11 Pro Max 64GB',
+                'name' => 'iPhone 11 Pro Max 64GB4',
                 'price' => 33990000,
                 'img' => 'icon-phone.png',
                 'description' => 'Chiếc iPhone mạnh mẽ nhất, lớn nhất, thời lượng pin tốt nhất đã xuất hiện. iPhone 11 Pro Max chắc chắn là chiếc điện thoại mà ai cũng ao ước khi sở hữu những tính năng xuất sắc nhất, đặc biệt là camera và pin.',
@@ -78,7 +78,7 @@ class ProductTableSeeder extends Seeder
             [
                 'id' => 6,
                 'category_detail_id' => 4,
-                'name' => 'iPhone 11 Pro Max 64GB',
+                'name' => 'iPhone 11 Pro Max 64GB5',
                 'price' => 33990000,
                 'img' => 'icon-phone.png',
                 'description' => 'Chiếc iPhone mạnh mẽ nhất, lớn nhất, thời lượng pin tốt nhất đã xuất hiện. iPhone 11 Pro Max chắc chắn là chiếc điện thoại mà ai cũng ao ước khi sở hữu những tính năng xuất sắc nhất, đặc biệt là camera và pin.',
@@ -90,7 +90,7 @@ class ProductTableSeeder extends Seeder
             [
                 'id' => 7,
                 'category_detail_id' => 4,
-                'name' => 'iPhone 11 Pro Max 64GB',
+                'name' => 'iPhone 11 Pro Max 64GB6',
                 'price' => 33990000,
                 'img' => 'icon-phone.png',
                 'description' => 'Chiếc iPhone mạnh mẽ nhất, lớn nhất, thời lượng pin tốt nhất đã xuất hiện. iPhone 11 Pro Max chắc chắn là chiếc điện thoại mà ai cũng ao ước khi sở hữu những tính năng xuất sắc nhất, đặc biệt là camera và pin.',
@@ -102,7 +102,7 @@ class ProductTableSeeder extends Seeder
             [
                 'id' => 8,
                 'category_detail_id' => 5,
-                'name' => 'iPhone 11 Pro Max 64GB',
+                'name' => 'iPhone 11 Pro Max 64GB7',
                 'price' => 33990000,
                 'img' => 'icon-phone.png',
                 'description' => 'Chiếc iPhone mạnh mẽ nhất, lớn nhất, thời lượng pin tốt nhất đã xuất hiện. iPhone 11 Pro Max chắc chắn là chiếc điện thoại mà ai cũng ao ước khi sở hữu những tính năng xuất sắc nhất, đặc biệt là camera và pin.',
@@ -114,7 +114,7 @@ class ProductTableSeeder extends Seeder
             [
                 'id' => 9,
                 'category_detail_id' => 6,
-                'name' => 'iPhone 11 Pro Max 64GB',
+                'name' => 'iPhone 11 Pro Max 64GB8',
                 'price' => 33990000,
                 'img' => 'icon-phone.png',
                 'description' => 'Chiếc iPhone mạnh mẽ nhất, lớn nhất, thời lượng pin tốt nhất đã xuất hiện. iPhone 11 Pro Max chắc chắn là chiếc điện thoại mà ai cũng ao ước khi sở hữu những tính năng xuất sắc nhất, đặc biệt là camera và pin.',
@@ -126,7 +126,7 @@ class ProductTableSeeder extends Seeder
             [
                 'id' => 9,
                 'category_detail_id' => 7,
-                'name' => 'iPhone 11 Pro Max 64GB',
+                'name' => 'iPhone 11 Pro Max 64GB9',
                 'price' => 33990000,
                 'img' => 'icon-phone.png',
                 'description' => 'Chiếc iPhone mạnh mẽ nhất, lớn nhất, thời lượng pin tốt nhất đã xuất hiện. iPhone 11 Pro Max chắc chắn là chiếc điện thoại mà ai cũng ao ước khi sở hữu những tính năng xuất sắc nhất, đặc biệt là camera và pin.',
@@ -138,7 +138,7 @@ class ProductTableSeeder extends Seeder
             [
                 'id' => 10,
                 'category_detail_id' => 7,
-                'name' => 'iPhone 11 Pro Max 64GB',
+                'name' => 'iPhone 11 Pro Max 64GB10',
                 'price' => 33990000,
                 'img' => 'icon-phone.png',
                 'description' => 'Chiếc iPhone mạnh mẽ nhất, lớn nhất, thời lượng pin tốt nhất đã xuất hiện. iPhone 11 Pro Max chắc chắn là chiếc điện thoại mà ai cũng ao ước khi sở hữu những tính năng xuất sắc nhất, đặc biệt là camera và pin.',
@@ -150,7 +150,7 @@ class ProductTableSeeder extends Seeder
             [
                 'id' => 11,
                 'category_detail_id' => 8,
-                'name' => 'iPhone 11 Pro Max 64GB',
+                'name' => 'iPhone 11 Pro Max 64GB11',
                 'price' => 33990000,
                 'img' => 'icon-phone.png',
                 'description' => 'Chiếc iPhone mạnh mẽ nhất, lớn nhất, thời lượng pin tốt nhất đã xuất hiện. iPhone 11 Pro Max chắc chắn là chiếc điện thoại mà ai cũng ao ước khi sở hữu những tính năng xuất sắc nhất, đặc biệt là camera và pin.',
@@ -162,7 +162,7 @@ class ProductTableSeeder extends Seeder
             [
                 'id' => 12,
                 'category_detail_id' => 8,
-                'name' => 'iPhone 11 Pro Max 64GB',
+                'name' => 'iPhone 11 Pro Max 64GB12',
                 'price' => 33990000,
                 'img' => 'icon-phone.png',
                 'description' => 'Chiếc iPhone mạnh mẽ nhất, lớn nhất, thời lượng pin tốt nhất đã xuất hiện. iPhone 11 Pro Max chắc chắn là chiếc điện thoại mà ai cũng ao ước khi sở hữu những tính năng xuất sắc nhất, đặc biệt là camera và pin.',

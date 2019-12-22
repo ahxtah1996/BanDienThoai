@@ -824,7 +824,7 @@
   /* box-shadow: 0 0 0 1px #ccc inset; */
 }
 .table-customize > thead > tr {
-  background-color: #ffd700;
+  background-color: #007BFF;
   border-radius: 0;
 }
 .table-customize > thead > tr > th {
@@ -976,7 +976,7 @@ a.remove.fa.fa-close.clr-txt {
 
 
 .attribute {
-    background: #ffd700;
+    background: #007BFF;
     padding: 2px 5px;
     color: #FFF;
     margin-right: 3px;
@@ -1083,12 +1083,12 @@ a.remove.fa.fa-close.clr-txt {
 }
 
 .theme-btn-2, .theme-btn-sm-2 {
-  background-color: #ffd700;
+  background-color: #007BFF;
   color: #fff;
 }
 
 .theme-btn-3, .theme-btn-sm-3 {
-  background-color: #cead0c;
+  background-color: #28A745;
   color: #fff;
 }
 
@@ -1098,7 +1098,7 @@ a.remove.fa.fa-close.clr-txt {
 }
 
 .subtotal_all {
-    color: #ffd700;
+    color: #007BFF;
     font-size: 20px;
 }
 

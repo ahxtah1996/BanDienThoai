@@ -32,7 +32,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(
-            ['commons.user-bar', 'user.index'], 'App\Http\ViewComposers\CategoryComposer'
+            [
+                'commons.user-bar',
+                'user.index',
+                'commons.user-header'
+            ], 'App\Http\ViewComposers\CategoryComposer'
         );
     }
 }

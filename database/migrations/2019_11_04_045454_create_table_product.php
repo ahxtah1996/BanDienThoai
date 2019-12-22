@@ -17,7 +17,7 @@ class CreateTableProduct extends Migration
             $table->bigIncrements('id');
             $table->integer('category_detail_id');
             $table->string('name');
-            $table->decimal('price', 18, 2);
+            $table->decimal('price', 18, 0);
             $table->string('img');
             $table->text('description');
             $table->integer('status');

@@ -70,7 +70,7 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="hotline">
-                                <i class="fa fa-phone" aria-hidden="true"></i> Hotline: <a class="smooth" href="tel:0833.234567" title="">0833.234567</a>
+                                <i class="fa fa-phone" aria-hidden="true"></i> Hotline: <a class="smooth" href="tel:0917973355" title="">0917.973.355</a>
                             </div>
                         </div>
                     </div>

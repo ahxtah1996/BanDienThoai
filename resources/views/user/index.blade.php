@@ -11,8 +11,8 @@
                             <li>
                                 <a class="smooth" href="/collections/{{ $category['id'] }}" title="">
                                     <div class="t-icon">
-                                        <img src="/img/icon/{{ $category['icon'] }}" alt="">
-                                        <img src="/img/icon/{{ $category['icon'] }}" alt="">
+                                        <img src="{{ asset('img/icon/'.$category['icon']) }}" alt="">
+                                        <img src="{{ asset('img/icon/'.$category['icon']) }}" alt="">
                                     </div>
                                     <span>{{ $category['name'] }}</span>
                                 </a>
@@ -134,7 +134,7 @@
                                         <div class="col-lg-3 col-sm-4 col-xs-6 wow fadeInUp" data-wow-delay="0.1s">
                                             <div class="product v2">
                                                 <a class="img hv-scale" href="{{ route('product.show', ['product' => $product->id]) }}" title="">
-                                                    <img src="/img/products/{{ $product->img }}" alt="" title="" />
+                                                    <img src="{{ asset('/img/products/'.$product->img) }}" alt="" title="" />
                                                 </a>
                                                 <div class="ct">
                                                     <h3 class="title"><a class="smooth" href="" title="">{{ $product->name }}</a></h3>
