@@ -14,7 +14,6 @@
 
     <!-- Fontfaces CSS-->
     <link href="{{ asset('themes/admin/css/font-face.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('themes/admin/vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('themes/admin/vendor/font-awesome-5/css/fontawesome-all.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('themes/admin/vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
 
@@ -33,6 +32,7 @@
     <!-- Main CSS-->
     <link href="{{ asset('themes/admin/css/theme.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('themes/admin/css/custom.scss') }}" rel="stylesheet" media="all">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
@@ -65,17 +65,17 @@
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="far fa-check-square"></i>Quản lý</a>
+                                <i class="fas fa-tasks"></i>Quản lý</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
                                     <a href="{{ route('mn-category.index') }}">Danh mục</a>
                                 </li>
-{{--                                 <li>
-                                    <a href="{{ route('mn-categoryChild.index') }}">Danh mục con</a>
+                                <li>
+                                    <a href="{{ route('mn-categoryChild-index') }}">Danh mục con</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('mn-categoryDetail.index') }}">Loại</a>
-                                </li> --}}
+                                    <a href="{{ route('mn-categoryDetail-index') }}">Loại</a>
+                                </li>
                                 <li>
                                     <a href="{{ route('mn-product.index') }}">Quản lý sản phẩm</a>
                                 </li>
@@ -83,11 +83,15 @@
                         </li>
                         <li>
                             <a href="">
-                                <i class="fas fa-calendar-alt"></i>Đơn hàng</a>
+                                <i class="fas fa-calendar-alt"></i>Quản lý đơn hàng</a>
                         </li>
                         <li>
                             <a href="">
                                 <i class="fas fa-map-marker-alt"></i>Maps</a>
+                        </li>
+                        <li>
+                            <a href="..">
+                                <i class="fab fa-chrome" target="_blank"></i>Trang web</a>
                         </li>
                     </ul>
                 </div>
@@ -111,7 +115,7 @@
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="far fa-check-square"></i>Quản lý</a>
+                                <i class="fas fa-tasks"></i>Quản lý</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
                                     <a href="{{ route('mn-category.index') }}">Danh mục</a>
@@ -134,6 +138,10 @@
                         <li>
                             <a href="">
                                 <i class="fas fa-map-marker-alt"></i>Maps</a>
+                        </li>
+                        <li>
+                            <a href="..">
+                                <i class="fab fa-chrome" target="_blank"></i>Trang web</a>
                         </li>
                     </ul>
                 </nav>

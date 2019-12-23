@@ -30,7 +30,7 @@
                 <form id="roomForm" name="roomForm" class="form-horizontal">
                     <input type="hidden" name="room_id" id="room_id">
                     <div class="form-group">
-                        <div class="col-sm-6">
+                        <div class="col-sm-7">
                             <select id="category_id" class="form-control" name="category_id">
                                 <option value=''>Chọn danh mục</option>
                                 @foreach ($categories as $data)
@@ -40,10 +40,18 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-6">
+                        <div class="col-sm-7">
                             <select id="category_child_id" class="form-control" name="category_child_id">
                                 <option value=''>Chọn danh mục con</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-7">
+                            <input type="checkbox" value="1" name="isOld" id="defaultCheck1">
+                            <label for="defaultCheck1">
+                                Máy cũ
+                            </label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -94,10 +102,27 @@
         $.get("{{ route('mn-category.index') }}" +'/' + id, function (data) {
             $('#room_id').val(data.id);
             $('#name').val(data.name);
-            // $('#category_child_id option')
-            //     .removeAttr('selected')
-            //     .filter('[value=' + data.category_id + ']')
-            //     .attr('selected', true)
+            $('#category_id option')
+                .removeAttr('selected')
+                .filter('[value=' + data.category.parent_category_id + ']')
+                .attr('selected', true);
+            $.get("{{ route('getCategoryChild') }}" +'?id=' + data.category.parent_category_id, function (data2) {
+                var html = `<option value=''>Chọn danh mục con</option>`;
+                for (const value of data2) {
+                    html += `<option value='`+value.id+`'>`+value.name+`</option>`
+                }
+                $('#category_child_id').html(html);
+                $('#category_child_id option')
+                    .removeAttr('selected')
+                    .filter('[value=' + data.category_id + ']')
+                    .attr('selected', true);
+                $('input[name=isOld]')
+                    .removeAttr('checked');
+                if (data.type) {
+                    $('input[name=isOld]')
+                        .attr('checked', true);
+                }
+            })
         })
     });
     $('#saveBtn').click(function (e) {
@@ -116,7 +141,7 @@
                 $('#saveBtn').html('Lưu');
             },
             error: function (data) {
-                console.log('Error:', data);
+                toastr.error('Có lỗi xảy ra vui lòng thử lại', 'Lỗi');
                 $('#saveBtn').html('Lưu');
             }
         });

@@ -103,18 +103,24 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'category_id' => 'min:1',
+            'category_child_id' => 'min:1',
+            'name' => 'required',
+        ]);
         if ($request->mode === 'detail') {
             CategoryDetail::updateOrCreate(['id' => $request->room_id],
             [
                 'name' => $request->name,
                 'category_id' => $request->category_child_id,
                 'status' => 1,
+                'type' => $request->isOld ? 1 : 0,
             ]);
         } else {
             Category::updateOrCreate(['id' => $request->room_id],
             [
                 'name' => $request->name,
-                'parent_category_id' => $request->category_id | null,
+                'parent_category_id' => $request->category_id ? $request->category_id : null,
                 'status' => 1,
                 'type' => 1,
             ]);
@@ -132,6 +138,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         $data = CategoryDetail::findOrFail($id);
+        $data->category;
 
         return response()->json($data);
     }

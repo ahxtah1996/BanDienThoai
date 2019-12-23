@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\CategoryDetail;
 use App\Repositories\Product\ProductRepositoryInterface;
 
 class ProductController extends Controller
@@ -110,6 +111,11 @@ class ProductController extends Controller
     public function collections($id)
     {
         $category = $this->productRepository->getNameCategoryDetail($id);
+        if (CategoryDetail::findOrFail($id)->type) {
+            $product = Product::where('category_detail_id', $id)->orderBy('updated_at', 'desc')->first();
+
+            return view('user.product.may-cu', compact('product', 'category'));
+        }
         $products = $this->productRepository->colectionDetail($id);
 
         return view('user.product.collection', compact('category', 'products'));

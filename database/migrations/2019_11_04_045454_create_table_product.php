@@ -18,8 +18,10 @@ class CreateTableProduct extends Migration
             $table->integer('category_detail_id');
             $table->string('name');
             $table->decimal('price', 18, 0);
-            $table->string('img');
-            $table->text('description');
+            $table->string('sku')->nullable();
+            $table->string('img')->nullable();
+            $table->text('des')->nullable();
+            $table->text('info')->nullable();
             $table->integer('status');
             $table->timestamps();
         });

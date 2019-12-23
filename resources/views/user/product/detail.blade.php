@@ -32,13 +32,11 @@
                         <div class="pro-detail">
                             <h1 class="title">{{ $product->name }}</h1>
                             <div class="des">
-                                <p>✅64GB: 18.900</p>
-                                <p>✅128GB:19.500</p>
-                                <p>✅256GB:22.000</p>
-                                <p>🎁1 đổi 1 - 12 tháng - Không phát sinh chi phí nào khác</p>
-                                <p>🎁Quà tặng: Sạc dự phòng, cường lực, ốp lưng</p>
+                                {!! $product->des !!}
                             </div>
-                            <span class="detail-sku">Mã: LL/, ZP/A</span>
+                            @if ($product->sku)
+                                <span class="detail-sku">Mã: {{ $product->sku }}</span>
+                            @endif
                             <div class="price">
                                 <strong>
                                     <span class="main-price">{{ number_format($product->price) }} ₫ </span>
@@ -63,14 +61,14 @@
                     <div id="thong-tin" class="tab-pane fade in active">
                         <div class="fv-content s-content">
                             <p>
-                                {{ $product->detail }}
+                                {{ $product->info }}
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="comments">
+                {{-- <div class="comments">
                     <div class="fb-comments" data-href="" data-width="100%" data-numposts="5"></div>
-                </div>
+                </div> --}}
                 <div class="pro-related">
                     <div class="slick-slide">
                         <div class="product v2" style="margin-bottom: 0;">
