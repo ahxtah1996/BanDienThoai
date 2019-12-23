@@ -39,7 +39,7 @@ class CategoryRepository extends RepositoryAbstract implements CategoryRepositor
                 $array[$value->id]['status'] = $value->status;
                 $array[$value->id]['id'] = $value->id;
                 $array[$value->id]['icon'] = $value->icon;
-                $array[$value->id]['background'] = $value->background;
+                $array[$value->id]['banner'] = $value->banner;
             } else {
                 $array[$value->parent_category_id]['chil'][$value->id]['name'] = $value->name;
             }
@@ -67,7 +67,7 @@ class CategoryRepository extends RepositoryAbstract implements CategoryRepositor
         $arrFilter = [];
         foreach ($categories as $key => $category) {
             $arrFilter[$key]['id'] = $category->id;
-            $arrFilter[$key]['description'] = $category->description;
+            $arrFilter[$key]['name'] = $category->name;
             $arrFilter[$key]['img_home'] = $category->img_home;
             $arrCategory = Category::where('parent_category_id', $category->id)->get();
             if (count($arrCategory) == 0) {

@@ -19,10 +19,12 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            // $data = Product::with('cinema')->with('roomType')->latest()->get();
             $data = Product::all();
+            $dataNew = $data->filter(function ($value, $key) {
+                return $value->categoryDetail->type !== 1;
+            });
 
-            return Datatables::of($data)
+            return Datatables::of($dataNew)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
                             $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editRoom" data-target="#ajaxModel">Sửa</a>';
@@ -56,11 +58,23 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        Room::updateOrCreate(['id' => $request->room_id],
-        ['name' => $request->name,
-        'cinema_id' => $request->cinema_id,
-        'room_type_id' => $request->room_type_id,
-        'note' => $request->note]);  
+        $request->validate([
+            'category_type_id' => 'min:1',
+            'name' => 'required',
+            'price' => 'required|numeric',
+            'sku' => 'required',
+        ]);
+        Product::updateOrCreate(['id' => $request->room_id],
+            [
+                'name' => $request->name,
+                'category_detail_id' => $request->category_type_id,
+                'sku' => $request->sku,
+                'des' => $request->des,
+                'price' => $request->price,
+                'info' => $request->info,
+                'img' => 'icon-phone.png',
+                'status' => 1,
+            ]);  
     
         return response()->json(['success' => __('label.cinemaSave')]);
     }
@@ -73,7 +87,10 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Product::findOrFail($id);
+        $data->categoryDetail->category;
+
+        return response()->json($data);
     }
 
     /**
@@ -84,9 +101,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $cinema = Room::findOrFail($id);
-
-        return response()->json($cinema);
+        //
     }
 
     /**

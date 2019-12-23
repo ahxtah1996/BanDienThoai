@@ -86,12 +86,8 @@
                                 <i class="fas fa-calendar-alt"></i>Quản lý đơn hàng</a>
                         </li>
                         <li>
-                            <a href="">
-                                <i class="fas fa-map-marker-alt"></i>Maps</a>
-                        </li>
-                        <li>
-                            <a href="..">
-                                <i class="fab fa-chrome" target="_blank"></i>Trang web</a>
+                            <a href=".." target="_blank">
+                                <i class="fab fa-chrome"></i>Trang web</a>
                         </li>
                     </ul>
                 </div>
@@ -103,7 +99,7 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="{{ route('admin-home') }}">
-                    <img src="{{ asset('/admin/images/icon/logo.png') }}" alt="Bi Shop" />
+                    <img src="{{ asset('themes/admin/images/icon/logo.png') }}" alt="Bi Shop" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -136,12 +132,8 @@
                                 <i class="fas fa-calendar-alt"></i>Quản lý đơn hàng</a>
                         </li>
                         <li>
-                            <a href="">
-                                <i class="fas fa-map-marker-alt"></i>Maps</a>
-                        </li>
-                        <li>
-                            <a href="..">
-                                <i class="fab fa-chrome" target="_blank"></i>Trang web</a>
+                            <a href=".." target="_blank">
+                                <i class="fab fa-chrome"></i>Trang web</a>
                         </li>
                     </ul>
                 </nav>
@@ -199,7 +191,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="{{ asset('admin/images/icon/avatar-01.jpg') }}" alt="Admin Bi" />
+                                            <img src="{{ asset('themes/admin/images/icon/avatar-01.jpg') }}" alt="Admin Bi" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="{{ route('admin-home') }}">{{ Auth::user()->name }}</a>
@@ -208,7 +200,7 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="{{ asset('admin/images/icon/avatar-01.jpg') }}" alt="Admin Bi" />
+                                                        <img src="{{ asset('themes/admin/images/icon/avatar-01.jpg') }}" alt="Admin Bi" />
                                                     </a>
                                                 </div>
                                                 <div class="content">

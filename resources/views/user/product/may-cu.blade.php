@@ -1,7 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-
+<div class="banner">
+    <img src="{{ asset('/img/banner/applebannergray.png') }}" alt="" title="">
+    <div class="breadcrumbs">
+        <div class="container">
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li><a href="#">Sản Phẩm</a></li>
+                <li style="text-transform: capitalize;"><a href="#">{{ $category }}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -10,7 +21,7 @@
                     <div class="pro-gallery">
                         <div class="pro-img">
                             <div class="slick-slide">
-                                <a class="img fancybox" href="https://ducanhstore.com/img/may-cu/dhe-haivan-kg0kxsdkk0q-unsplash.jpg" data-fancybox="image">
+                                <a class="img fancybox" href="" data-fancybox="image">
                                     <img src="https://ducanhstore.com/storage/may-cu/dhe-haivan-kg0kxsdkk0q-unsplash.jpg" alt="" title="" />
                                 </a>
                             </div>
@@ -26,11 +37,11 @@
                     <div class="pro-detail">
                         <h1 class="title">{{ $category }}</h1>
                         <div class="des">
-                            {!! $product->title !!}
+                            {!! $detail->des !!}
                         </div>
-                        <span class="detail-sku">Mã: iphone cu</span>
+                        <span class="detail-sku">Mã: {{ $detail->sku }}</span>
                         <div class="price">
-                            <strong><span class="main-price">{{ number_format($product->price, 0, '', '.') }} ₫</span></strong>
+                            <strong><span class="main-price">{{ number_format($detail->price, 0, '', '.') }} ₫</span></strong>
                         </div>
 
                         <div class="clearfix"></div>
@@ -50,14 +61,17 @@
             <div class="tab-content pro-info-ct">
                 <div id="thong-tin" class="tab-pane fade in active">
                     <div class="fv-content s-content">
-                        <h1 style="text-align: center;"><span style="color: #ff0000; font-size: 14pt;"><strong></strong></span></h1>
+                        {{-- <h1 style="text-align: center;"><span style="color: #ff0000; font-size: 14pt;"><strong></strong></span></h1>
                         <h1 style="text-align: center;"><span style="color: #ff0000; font-size: 14pt;"><strong><img src="/img/may-cu/iphone-xs-max-256gb-gold-4.jpg" alt="" width="auto" height="auto" />Bảng báo giá iPhone Cũ - Đã Qua Sử Dụng. Còn đẹp 99% - Zin All - Đã test kỹ....</strong></span></h1>
                         <p style="text-align: justify;">Tất cả máy iPhone bên Tiệm mình bán ra đều được kiểm tra kỹ lưỡng chất lượng sản phẩm trước khi đến tay Khách Hàng. </p>
                         <p style="text-align: justify;"></p>
                         <p style="text-align: justify;">Máy đã qua sử dụng bên Tiệm mình cam kết zin nguyên bản, không qua sửa chữa. Đặc biệt, với chế độ bảo hành 1 đổi 1 - Tiệm mình cam kết mang đến cho Khách Hàng dịch vụ tốt và chu đáo.</p>
                         <p style="text-align: justify;"></p>
                         <p style="text-align: justify;">Sau đây là Báo Báo Giá 1 số dòng iPhone mà Tiệm mình đang Kinh Doanh, 1 số sản phẩm nếu không có trong list dưới đây. Các bạn có thể liên hệ trực tiếp để bên mình báo giá cụ thể cho các bạn.</p>
-                        <p></p>
+                        <p></p> --}}
+                        <p>
+                            {{ $detail->info }}
+                        </p>
                         <table height="2696" border="1pt" style="border-color: #000000; height: auto; width: 784px; background-color: #ffde59;">
                             <tbody>
                                 <tr>
@@ -66,20 +80,19 @@
                                     <td style="text-align: center; width: 130px;"><span style="color: #ff0000;"><strong>ĐƠN GIÁ</strong></span></td>
                                     <td style="text-align: center; width: 160px;"><span style="color: #ff0000;"><strong>TÌNH TRẠNG</strong></span></td>
                                 </tr>
-                                <tr>
-                                    <td style="text-align: center; width: 286.53125px;">iPhone Xs 64gb Gray</td>
-                                    <td style="text-align: center; width: 179.46875px;">LL,ZP,B,X...</td>
-                                    <td style="text-align: center; width: 130px;">17,500,000</td>
-                                    <td style="text-align: center; width: 160px;">đẹp 99%</td>
-                                </tr>
+                                @foreach ($products as $row)
+                                    <tr>
+                                        <td style="text-align: center; width: 286.53125px;">{{ $row->name }}</td>
+                                        <td style="text-align: center; width: 179.46875px;">{{ $row->sku }}</td>
+                                        <td style="text-align: center; width: 130px;">{{ number_format($row->price) }} đ</td>
+                                        <td style="text-align: center; width: 160px;">{{ $row->des }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                         <p></p>
                     </div>
                 </div>
-            </div>
-            <div class="comments">
-                <div class="fb-comments" data-href="https://ducanhstore.com/iphonecu" data-width="100%" data-numposts="5"></div>
             </div>
             <div class="pro-related">
                 <div class="slick-slide">

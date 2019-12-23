@@ -7,3 +7,9 @@
 select {
     text-transform: capitalize;
 }
+.navbar-sidebar .navbar__list li.active > a {
+    color: red;
+}
+.navbar-sidebar .navbar__list li a:hover {
+    color: red;
+}

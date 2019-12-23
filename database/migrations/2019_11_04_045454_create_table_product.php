@@ -19,8 +19,8 @@ class CreateTableProduct extends Migration
             $table->string('name');
             $table->decimal('price', 18, 0);
             $table->string('sku')->nullable();
-            $table->string('img')->nullable();
             $table->text('des')->nullable();
+            $table->string('img')->nullable();
             $table->text('info')->nullable();
             $table->integer('status');
             $table->timestamps();

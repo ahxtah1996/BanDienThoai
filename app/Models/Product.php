@@ -43,4 +43,12 @@ class Product extends Model
         // 'created_at',
         'updated_at'
     ];
+
+    /**
+     * relationship with category detail
+     */
+    public function categoryDetail()
+    {
+        return $this->belongsTo('App\Models\CategoryDetail');
+    }
 }

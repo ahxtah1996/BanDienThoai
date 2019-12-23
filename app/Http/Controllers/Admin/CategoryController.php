@@ -185,25 +185,25 @@ class CategoryController extends Controller
         return response()->json(['success' => 'Đã xóa thành công']);
     }
 
-    public function getCategoryChild(Request $request)
-    {
-        if ($request->id) {
-            $data = Category::where('parent_category_id', $request->id)->get();
-        } else {
-            $data = [];
-        }
+    // public function getCategoryChild(Request $request)
+    // {
+    //     if ($request->id) {
+    //         $data = Category::where('parent_category_id', $request->id)->get();
+    //     } else {
+    //         $data = [];
+    //     }
 
-        return response()->json($data);
-    }
+    //     return response()->json($data);
+    // }
 
-    public function getCategoryType(Request $request)
-    {
-        if ($request->id) {
-            $data = CategoryDetail::where('category_id', $request->id)->get();
-        } else {
-            $data = [];
-        }
+    // public function getCategoryType(Request $request)
+    // {
+    //     if ($request->id) {
+    //         $data = CategoryDetail::where('category_id', $request->id)->get();
+    //     } else {
+    //         $data = [];
+    //     }
 
-        return response()->json($data);
-    }
+    //     return response()->json($data);
+    // }
 }

@@ -34,7 +34,7 @@
                                                 @endforeach
                                             @endif
                                         @endif
-                                        <img class="groupdrop-banner-pos" src="/img/banner/{{ $category['background'] }}" alt="">
+                                        <img class="groupdrop-banner-pos" src="/img/banner/{{ $category['banner'] }}" alt="">
                                     </div>
                                 </div>
                             </li>
@@ -112,7 +112,7 @@
             <div class="h-head">
                 <div class="table bot">
                     <div class="cell">
-                        <h2 class="title">{{ $category['description'] }}</h2>
+                        <h2 class="title">{{ $category['name'] }}</h2>
                     </div>
                     <div class="cell text-right">
                         <a class="smooth more" href="{{ route('product.index', ['id' => $category['id']]) }}" title="">Xem tất cả  >></a>

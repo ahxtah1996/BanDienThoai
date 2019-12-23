@@ -18,7 +18,7 @@ class CreateTableCategories extends Migration
             $table->integer('parent_category_id')->nullable();
             $table->string('name');
             $table->string('icon')->nullable();
-            $table->string('background')->nullable();
+            $table->string('banner')->nullable();
             $table->integer('status');
             $table->integer('type');
             $table->timestamps();

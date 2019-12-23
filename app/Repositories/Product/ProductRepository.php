@@ -29,7 +29,10 @@ class ProductRepository extends RepositoryAbstract implements ProductRepositoryI
     public function colection($id)
     {
         $categories = DB::table('categories')->where('parent_category_id', $id)->pluck('id');
-        $categoryDetailId = DB::table('category_detail')->whereIn('category_id', $categories)->pluck('id');
+        $categoryDetailId = DB::table('category_detail')
+            ->whereIn('category_id', $categories)
+            ->where('type', '!=', 1)
+            ->pluck('id');
         $products = $this->model->whereIn('category_detail_id', $categoryDetailId)->paginate(10);
 
         return $products;

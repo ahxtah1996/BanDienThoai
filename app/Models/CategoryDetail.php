@@ -53,10 +53,10 @@ class CategoryDetail extends Model
     }
 
     /**
-     * relationship with categories
+     * relationship with products
      */
     public function products()
     {
         return $this->hasMany('App\Models\Product');
-    }    
+    }
 }

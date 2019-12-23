@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Loại</th>
                 <th>Tên</th>
                 <th>Ngày tạo</th>
                 <th>Hành động</th>
@@ -54,18 +55,30 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="name" class="col-sm-4 control-label">Tên sản phẩm</label>
+                        <label for="name" class="col-sm-6 control-label">Tên sản phẩm</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên sản phẩm" value="" maxlength="50" required="">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Mô tả</label>
+                        <label for="sku" class="col-sm-4 control-label">Mã</label>
                         <div class="col-sm-12">
-                            <textarea id="note" name="note" required="" placeholder="Nhập thông tin sản phẩm" class="form-control"></textarea>
+                            <input type="text" class="form-control" id="sku" name="sku" placeholder="Nhập mã sản phẩm" value="" maxlength="50" required="">
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="des" class="col-sm-3 control-label">Mô tả</label>
+                        <div class="col-sm-12">
+                            <textarea id="des" name="des" required="" placeholder="Nhập mô tả sản phẩm" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="price" class="col-sm-4 control-label">Giá</label>
+                        <div class="col-sm-12">
+                            <input type="number" class="form-control" id="price" name="price" placeholder="Nhập giá sản phẩm" value="" maxlength="50" required="">
+                        </div>
+                    </div>
+{{--                     <div class="form-group">
                         <label for="name" class="col-sm-4 control-label">Màu sắc</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="color" name="color" placeholder="Nhập mùa sắc sản phẩm" value="" maxlength="50" required="">
@@ -82,6 +95,12 @@
                         <div class="col-sm-12">
                             <input type="number" class="form-control" id="imei" name="imei" placeholder="Nhập imei sản phẩm" value="" maxlength="50" required="">
                         </div>
+                    </div> --}}
+                    <div class="form-group">
+                        <label for="info" class="col-sm-4 control-label">Thông tin sản phẩm</label>
+                        <div class="col-sm-12">
+                            <textarea id="info" name="info" required="" placeholder="Nhập thông tin sản phẩm" class="form-control"></textarea>
+                        </div>
                     </div>
                     <div class="form-group col-sm">
                         <label for="image" class="control-label">Ảnh</label>
@@ -89,16 +108,10 @@
                             <input type="file" class="form-control" id="image" name="image">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="name" class="col-sm-4 control-label">Giá</label>
-                        <div class="col-sm-12">
-                            <input type="number" class="form-control" id="price" name="price" placeholder="Nhập giá sản phẩm" value="" maxlength="50" required="">
-                        </div>
-                    </div>
                     <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit" class="btn btn-primary" id="saveBtn" value="create">
-                        Lưu
-                     </button>
+                        <button type="submit" class="btn btn-primary" id="saveBtn" value="create">
+                            Lưu
+                        </button>
                     </div>
                 </form>
             </div>
@@ -115,11 +128,10 @@
             }
     });
     var table = $('.data-table').DataTable({
-        // processing: true,
-        // serverSide: true,
         ajax: "{{ route('mn-product.index') }}",
         columns: [
             {data: 'id', name: 'id'},
+            {data: 'category_detail.name', name: 'type'},
             {data: 'name', name: 'name'},
             {data: 'created_at', name: 'created_at'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
@@ -130,24 +142,51 @@
         $('#room_id').val('');
         $('#roomForm').trigger("reset");
         $('#modelHeading').html("Thêm sản phẩm");
-        // $('#ajaxModel').modal('show');
     });
     $('body').on('click', '.editRoom', function () {
         var id = $(this).data('id');
-        // $.get("{{ route('mn-product.index') }}" +'/' + room_id + '/edit', function (data) {
-            // $('#modelHeading').html("Sửa thông tin sản phẩm");
-            // $('#saveBtn').val("edit-room");
-            // $('#ajaxModel').modal('show');
-            // $('#room_id').val(data.id);
-            // $('#category_id').val(data.category_id);
-            // $('#room_type_id').val(data.room_type_id);
-            // $('#name').val(data.name);
-            // $('#note').val(data.note);
-        // })
+        $('#modelHeading').html("Sửa thông tin sản phẩm");
+        $('#saveBtn').val("edit-room");
+        $('#ajaxModel').modal('show');
+        $.get("{{ route('mn-product.index') }}" +'/' + id, function (data) {
+            $('#room_id').val(data.id);
+            $('#name').val(data.name);
+            $('#sku').val(data.sku);
+            $('#des').val(data.des);
+            $('#price').val(data.price);
+            $('#info').val(data.info);
+            $('#note').val(data.note);
+            $('#category_id option')
+                .removeAttr('selected')
+                .filter('[value=' + data.category_detail.category.parent_category_id + ']')
+                .attr('selected', true);
+            $.get("{{ route('getCategoryChild') }}" +'?id=' + data.category_detail.category.parent_category_id, function (data2) {
+                var html = `<option value=''>Chọn danh mục con</option>`;
+                for (const value of data2) {
+                    html += `<option value='`+value.id+`'>`+value.name+`</option>`
+                }
+                $('#category_child_id').html(html);
+                $('#category_child_id option')
+                    .removeAttr('selected')
+                    .filter('[value=' + data.category_detail.category_id + ']')
+                    .attr('selected', true);
+                $.get("{{ route('getCategoryType') }}" +'?id=' + data.category_detail.category_id, function (data3) {
+                    var html = `<option value=''>Chọn loại</option>`;
+                    for (const value of data3) {
+                        html += `<option value='`+value.id+`'>`+value.name+`</option>`
+                    }
+                    $('#category_type_id').html(html);
+                    $('#category_type_id option')
+                        .removeAttr('selected')
+                        .filter('[value=' + data.category_detail_id + ']')
+                        .attr('selected', true);
+                })
+            })
+        })
     });
     $('#saveBtn').click(function (e) {
         e.preventDefault();
-        $(this).html('{{ __('label.sending') }}');
+        $(this).html('Đang lưu');
         $.ajax({
             data: $('#roomForm').serialize(),
             url: "{{ route('mn-product.store') }}",
@@ -155,13 +194,14 @@
             dataType: 'json',
             success: function (data) {
                 $('#roomForm').trigger("reset");
-                // $('#ajaxModel').modal('hide');
-                table.draw();
-                document.getElementById("mess").innerHTML = data.success;
+                $('#ajaxModel').modal('hide');
+                table.ajax.reload();
+                toastr.success(data.success, 'Thành công');
+                $('#saveBtn').html('Lưu');
             },
             error: function (data) {
-                console.log('Error:', data);
-                $('#saveBtn').html('{{ __('label.saveChange') }}');
+                toastr.error('Có lỗi xảy ra vui lòng thử lại', 'Lỗi');
+                $('#saveBtn').html('Lưu');
             }
         });
     });
@@ -173,11 +213,11 @@
                 type: "DELETE",
                 url: "{{ route('mn-product.store') }}" + '/' + room_id,
                 success: function (data) {
-                    table.draw();
-                    document.getElementById("mess").innerHTML = data.success;
+                    table.ajax.reload();
+                    toastr.success(data.success, 'Thành công');
                 },
                 error: function (data) {
-                    console.log('Error:', data);
+                    toastr.error('Có lỗi xảy ra vui lòng thử lại', 'Lỗi');
                 }
             });
         }

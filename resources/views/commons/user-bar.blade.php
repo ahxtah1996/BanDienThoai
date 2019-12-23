@@ -34,7 +34,7 @@
                                                     @endforeach
                                                 @endif
                                             @endif
-                                            <img class="groupdrop-banner-pos" src="/img/banner/{{ $category['background'] }}" alt="">
+                                            <img class="groupdrop-banner-pos" src="/img/banner/{{ $category['banner'] }}" alt="">
                                         </div>
                                     </div>
                                 </li>

@@ -112,9 +112,13 @@ class ProductController extends Controller
     {
         $category = $this->productRepository->getNameCategoryDetail($id);
         if (CategoryDetail::findOrFail($id)->type) {
-            $product = Product::where('category_detail_id', $id)->orderBy('updated_at', 'desc')->first();
+            $detail = Product::where('category_detail_id', $id)->first();
+            $products = Product::where('category_detail_id', $id)
+                ->where('status', '!=', 0)
+                ->orderBy('name', 'desc')
+                ->get();
 
-            return view('user.product.may-cu', compact('product', 'category'));
+            return view('user.product.may-cu', compact('detail', 'category', 'products'));
         }
         $products = $this->productRepository->colectionDetail($id);
 
