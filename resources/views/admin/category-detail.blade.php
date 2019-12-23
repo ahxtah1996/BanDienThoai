@@ -3,13 +3,14 @@
 @section('content')
 <div class="container">
     <button type="button" id="createNewRoom" class="btn btn-success" data-toggle="modal" data-target="#ajaxModel">
-        Thêm danh mục
+        Thêm loại
     </button><a id="mess"></a>
     <table class="table table-bordered data-table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Tên danh mục</th>
+                <th>Tên danh mục con</th>
+                <th>Tên loại</th>
                 <th>Hành động</th>
             </tr>
         </thead>
@@ -29,9 +30,26 @@
                 <form id="roomForm" name="roomForm" class="form-horizontal">
                     <input type="hidden" name="room_id" id="room_id">
                     <div class="form-group">
-                        <label for="name" class="col-sm-4 control-label">Tên danh mục</label>
+                        <div class="col-sm-6">
+                            <select id="category_id" class="form-control" name="category_id">
+                                <option value=''>Chọn danh mục</option>
+                                @foreach ($categories as $data)
+                                    <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <select id="category_child_id" class="form-control" name="category_child_id">
+                                <option value=''>Chọn danh mục con</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-5 control-label">Tên loại</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên danh mục" value="" maxlength="50" required="">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên loại" value="" maxlength="50" required="">
                         </div>
                     </div>
                     <div class="col-sm-offset-2 col-sm-10">
@@ -54,9 +72,10 @@
             }
     });
     var table = $('.data-table').DataTable({
-        ajax: "{{ route('mn-category.index') }}",
+        ajax: "{{ route('mn-categoryDetail-index') }}",
         columns: [
             {data: 'id', name: 'id'},
+            {data: 'nameParent', name: 'nameParent'},
             {data: 'name', name: 'name'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
@@ -65,16 +84,20 @@
         $('#saveBtn').val("create-room");
         $('#room_id').val('');
         $('#roomForm').trigger("reset");
-        $('#modelHeading').html("Thêm danh mục");
+        $('#modelHeading').html("Thêm danh mục con");
     });
     $('body').on('click', '.editRoom', function () {
         var id = $(this).data('id');
         $('#ajaxModel').modal('show');
-        $('#modelHeading').html("Sửa thông tin sản phẩm");
+        $('#modelHeading').html("Sửa thông tin danh mục con");
         $('#saveBtn').val("edit-room");
-        $.get("{{ route('mn-category.index') }}" +'/' + id + '/edit', function (data) {
+        $.get("{{ route('mn-category.index') }}" +'/' + id, function (data) {
             $('#room_id').val(data.id);
             $('#name').val(data.name);
+            // $('#category_child_id option')
+            //     .removeAttr('selected')
+            //     .filter('[value=' + data.category_id + ']')
+            //     .attr('selected', true)
         })
     });
     $('#saveBtn').click(function (e) {
@@ -82,7 +105,7 @@
         $(this).html('Đang lưu');
         $.ajax({
             data: $('#roomForm').serialize(),
-            url: "{{ route('mn-category.store') }}",
+            url: "{{ route('mn-category.store', ['mode' => 'detail']) }}",
             type: "POST",
             dataType: 'json',
             success: function (data) {
@@ -93,7 +116,7 @@
                 $('#saveBtn').html('Lưu');
             },
             error: function (data) {
-                toastr.error('Có lỗi xảy ra vui lòng thử lại', 'Lỗi');
+                console.log('Error:', data);
                 $('#saveBtn').html('Lưu');
             }
         });
@@ -105,6 +128,7 @@
             $.ajax({
                 type: "DELETE",
                 url: "{{ route('mn-category.store') }}" + '/' + room_id,
+                data: {'mode': 'detail'},
                 success: function (data) {
                     table.ajax.reload();
                     toastr.success(data.success, 'Thành công');
@@ -124,17 +148,6 @@
                 html += `<option value='`+value.id+`'>`+value.name+`</option>`
             }
             $('#category_child_id').html(html);
-        })
-    });
-    $('select#category_child_id').on('change', function (e) {
-        var optionSelected = $("option:selected", this);
-        var id = this.value;
-        $.get("{{ route('getCategoryType') }}" +'?id=' + id, function (data) {
-            var html = `<option value=''>Chọn loại</option>`;
-            for (const value of data) {
-                html += `<option value='`+value.id+`'>`+value.name+`</option>`
-            }
-            $('#category_type_id').html(html);
         })
     });
 });

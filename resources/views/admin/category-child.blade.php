@@ -3,13 +3,14 @@
 @section('content')
 <div class="container">
     <button type="button" id="createNewRoom" class="btn btn-success" data-toggle="modal" data-target="#ajaxModel">
-        Thêm danh mục
+        Thêm danh mục con
     </button><a id="mess"></a>
     <table class="table table-bordered data-table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Tên danh mục</th>
+                <th>Tên danh mục con</th>
                 <th>Hành động</th>
             </tr>
         </thead>
@@ -29,9 +30,19 @@
                 <form id="roomForm" name="roomForm" class="form-horizontal">
                     <input type="hidden" name="room_id" id="room_id">
                     <div class="form-group">
-                        <label for="name" class="col-sm-4 control-label">Tên danh mục</label>
+                        <div class="col-sm-6">
+                            <select id="category_id" class="form-control" name="category_id">
+                                <option value=''>Chọn danh mục</option>
+                                @foreach ($categories as $data)
+                                    <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-5 control-label">Tên danh mục con</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên danh mục" value="" maxlength="50" required="">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên danh mục con" value="" maxlength="50" required="">
                         </div>
                     </div>
                     <div class="col-sm-offset-2 col-sm-10">
@@ -54,9 +65,10 @@
             }
     });
     var table = $('.data-table').DataTable({
-        ajax: "{{ route('mn-category.index') }}",
+        ajax: "{{ route('mn-categoryChild-index') }}",
         columns: [
             {data: 'id', name: 'id'},
+            {data: 'nameParent', name: 'nameParent'},
             {data: 'name', name: 'name'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
@@ -65,16 +77,20 @@
         $('#saveBtn').val("create-room");
         $('#room_id').val('');
         $('#roomForm').trigger("reset");
-        $('#modelHeading').html("Thêm danh mục");
+        $('#modelHeading').html("Thêm danh mục con");
     });
     $('body').on('click', '.editRoom', function () {
         var id = $(this).data('id');
         $('#ajaxModel').modal('show');
-        $('#modelHeading').html("Sửa thông tin sản phẩm");
+        $('#modelHeading').html("Sửa thông tin danh mục con");
         $('#saveBtn').val("edit-room");
         $.get("{{ route('mn-category.index') }}" +'/' + id + '/edit', function (data) {
             $('#room_id').val(data.id);
             $('#name').val(data.name);
+            $('#category_id option')
+                .removeAttr('selected')
+                .filter('[value=' + data.parent_category_id + ']')
+                .attr('selected', true)
         })
     });
     $('#saveBtn').click(function (e) {
@@ -89,10 +105,11 @@
                 $('#ajaxModel').modal('hide');
                 table.ajax.reload();
                 $('#roomForm').trigger("reset");
-                document.getElementById("mess").innerHTML = data.success;
+                toastr.success(data.success, 'Thành công');
+                $('#saveBtn').html('Lưu');
             },
             error: function (data) {
-                console.log('Error:', data);
+                toastr.error('Có lỗi xảy ra vui lòng thử lại', 'Lỗi');
                 $('#saveBtn').html('Lưu');
             }
         });
@@ -106,35 +123,13 @@
                 url: "{{ route('mn-category.store') }}" + '/' + room_id,
                 success: function (data) {
                     table.ajax.reload();
-                    document.getElementById("mess").innerHTML = data.success;
+                    toastr.success(data.success, 'Thành công');
                 },
                 error: function (data) {
-                    console.log('Error:', data);
+                    toastr.error('Có lỗi xảy ra vui lòng thử lại', 'Lỗi');
                 }
             });
         }
-    });
-    $('select#category_id').on('change', function (e) {
-        var optionSelected = $("option:selected", this);
-        var id = this.value;
-        $.get("{{ route('getCategoryChild') }}" +'?id=' + id, function (data) {
-            var html = `<option value=''>Chọn danh mục con</option>`;
-            for (const value of data) {
-                html += `<option value='`+value.id+`'>`+value.name+`</option>`
-            }
-            $('#category_child_id').html(html);
-        })
-    });
-    $('select#category_child_id').on('change', function (e) {
-        var optionSelected = $("option:selected", this);
-        var id = this.value;
-        $.get("{{ route('getCategoryType') }}" +'?id=' + id, function (data) {
-            var html = `<option value=''>Chọn loại</option>`;
-            for (const value of data) {
-                html += `<option value='`+value.id+`'>`+value.name+`</option>`
-            }
-            $('#category_type_id').html(html);
-        })
     });
 });
 </script>

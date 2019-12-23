@@ -34,6 +34,7 @@
     <link href="{{ asset('themes/admin/css/theme.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('themes/admin/css/custom.scss') }}" rel="stylesheet" media="all">
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
 </head>
 
@@ -59,7 +60,7 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="active">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li class="has-sub">
@@ -105,7 +106,7 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="active">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li class="has-sub">
@@ -115,12 +116,12 @@
                                 <li>
                                     <a href="{{ route('mn-category.index') }}">Danh mục</a>
                                 </li>
-{{--                                 <li>
-                                    <a href="{{ route('mn-categoryChild.index') }}">Danh mục con</a>
+                                <li>
+                                    <a href="{{ route('mn-categoryChild-index') }}">Danh mục con</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('mn-categoryDetail.index') }}">Loại</a>
-                                </li> --}}
+                                    <a href="{{ route('mn-categoryDetail-index') }}">Loại</a>
+                                </li>
                                 <li>
                                     <a href="{{ route('mn-product.index') }}">Quản lý sản phẩm</a>
                                 </li>
@@ -256,6 +257,7 @@
     <script src="{{ asset('themes/admin/vendor/select2/select2.min.js') }}"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
     <!-- Main JS-->
     <script src="{{ asset('themes/admin/js/main.js') }}"></script>

@@ -19,26 +19,6 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            // switch ($request->mode) {
-            //     case 'parent':
-            //         $data = Category::where('parent_category_id', null)->get();
-            //         break;
-            //     case 'child':
-            //         $data = Category::whereNotNull('parent_category_id')->get();
-            //         foreach ($data as $key => $value) {
-            //             $data[$key]['nameParent'] = Category::findOrFail($value->parent_category_id)->name;
-            //         }
-            //         break;
-            //     case 'detail':
-            //         $data = CategoryDetail::all();
-            //         foreach ($data as $key => $value) {
-            //             $data[$key]['nameParent'] = Category::findOrFail($value->category_id)->name;
-            //         }
-            //         break;
-            //     default:
-            //         $data = [];
-            //         break;
-            // }
             $data = Category::where('parent_category_id', null)->get();
  
             return Datatables::of($data)
@@ -55,6 +35,54 @@ class CategoryController extends Controller
         $categories = Category::where('parent_category_id', null)->get();
 
         return view('admin.category', compact('categories'));
+    }
+
+    public function categoryChild(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Category::whereNotNull('parent_category_id')->get();
+            foreach ($data as $key => $value) {
+                $data[$key]['nameParent'] = Category::findOrFail($value->parent_category_id)->name;
+            }
+ 
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+                            $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editRoom" data-target="#ajaxModel">Sửa</a>';
+                            $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteRoom">Xóa</a>';
+
+                            return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+        $categories = Category::where('parent_category_id', null)->get();
+
+        return view('admin.category-child', compact('categories'));
+    }
+
+    public function categoryDetail(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = CategoryDetail::all();
+            foreach ($data as $key => $value) {
+                $data[$key]['nameParent'] = Category::findOrFail($value->category_id)->name;
+            }
+ 
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+                            $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editRoom" data-target="#ajaxModel">Sửa</a>';
+                            $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteRoom">Xóa</a>';
+
+                            return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+        $categories = Category::where('parent_category_id', null)->get();
+
+        return view('admin.category-detail', compact('categories'));
     }
 
     /**
@@ -75,14 +103,23 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::updateOrCreate(['id' => $request->room_id],
-        [
-            'name' => $request->name,
-            'parent_category_id' => null,
-            'status' => 1,
-            'type' => 1,
-        ]);
-    
+        if ($request->mode === 'detail') {
+            CategoryDetail::updateOrCreate(['id' => $request->room_id],
+            [
+                'name' => $request->name,
+                'category_id' => $request->category_child_id,
+                'status' => 1,
+            ]);
+        } else {
+            Category::updateOrCreate(['id' => $request->room_id],
+            [
+                'name' => $request->name,
+                'parent_category_id' => $request->category_id | null,
+                'status' => 1,
+                'type' => 1,
+            ]);
+        }
+
         return response()->json(['success' => 'Đã lưu']);
     }
 
@@ -94,7 +131,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = CategoryDetail::findOrFail($id);
+
+        return response()->json($data);
     }
 
     /**
@@ -105,9 +144,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $cinema = Category::findOrFail($id);
+        $data = Category::findOrFail($id);
 
-        return response()->json($cinema);
+        return response()->json($data);
     }
 
     /**
@@ -128,11 +167,15 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        Category::findOrFail($id)->delete();
-        
-        return response()->json(['success' => __('label.cinemaDel')]);
+        if ($request->mode === 'detail') {
+            CategoryDetail::findOrFail($id)->delete();
+        } else {
+            Category::findOrFail($id)->delete();            
+        }
+
+        return response()->json(['success' => 'Đã xóa thành công']);
     }
 
     public function getCategoryChild(Request $request)

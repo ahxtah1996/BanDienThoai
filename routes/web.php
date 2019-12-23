@@ -38,6 +38,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'manager', 'middleware' => 'ad
     Route::resource('mn-product', 'ProductController');
     Route::resource('mn-category', 'CategoryController');
     Route::get('mn-categoryChild-index', 'CategoryController@categoryChild')->name('mn-categoryChild-index');
+    Route::get('mn-categoryDetail-index', 'CategoryController@categoryDetail')->name('mn-categoryDetail-index');
     Route::get('getCategoryChild', 'ProductController@getCategoryChild')->name('getCategoryChild');
     Route::get('getCategoryType', 'ProductController@getCategoryType')->name('getCategoryType');
 });
