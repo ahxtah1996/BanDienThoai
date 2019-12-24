@@ -22,7 +22,7 @@
                             <div class="pro-img">
                                 <div class="item">
                                     <a class="img" title="" rel="gal">
-                                        <img src="{{ asset('img/iphone/11-pro/iphone1.png') }}" alt="">
+                                        <img src="{{ asset('img/products/'.$product->img) }}" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
                     <div id="thong-tin" class="tab-pane fade in active">
                         <div class="fv-content s-content">
                             <p>
-                                {{ $product->info }}
+                                {!! $product->info !!}
                             </p>
                         </div>
                     </div>

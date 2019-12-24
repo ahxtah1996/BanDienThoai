@@ -31,10 +31,11 @@
 
     <!-- Main CSS-->
     <link href="{{ asset('themes/admin/css/theme.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('themes/admin/css/custom.scss') }}" rel="stylesheet" media="all">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+
+    <link href="{{ asset('themes/admin/css/custom.scss') }}" rel="stylesheet" media="all">
 
 </head>
 
@@ -258,9 +259,11 @@
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
 
     <!-- Main JS-->
     <script src="{{ asset('themes/admin/js/main.js') }}"></script>
+
     @stack('scripts')
 
 </body>

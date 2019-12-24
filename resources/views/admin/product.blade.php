@@ -21,14 +21,14 @@
 </div>
 <!-- Button trigger modal -->
 
-<div class="modal fade" id="ajaxModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade scrollable" id="ajaxModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="modelHeading"></h4>
             </div>
             <div class="modal-body">
-                <form id="roomForm" name="roomForm" class="form-horizontal">
+                <form id="roomForm" name="roomForm" class="form-horizontal" enctype="multipart/form-data">
                     <input type="hidden" name="room_id" id="room_id">
                     <div class="form-group">
                         <div class="col-sm-6">
@@ -69,7 +69,7 @@
                     <div class="form-group">
                         <label for="des" class="col-sm-3 control-label">Mô tả</label>
                         <div class="col-sm-12">
-                            <textarea id="des" name="des" required="" placeholder="Nhập mô tả sản phẩm" class="form-control"></textarea>
+                            <textarea id="des" name="des" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -78,28 +78,10 @@
                             <input type="number" class="form-control" id="price" name="price" placeholder="Nhập giá sản phẩm" value="" maxlength="50" required="">
                         </div>
                     </div>
-{{--                     <div class="form-group">
-                        <label for="name" class="col-sm-4 control-label">Màu sắc</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="color" name="color" placeholder="Nhập mùa sắc sản phẩm" value="" maxlength="50" required="">
-                        </div>
-                    </div>
                     <div class="form-group">
-                        <label for="name" class="col-sm-4 control-label">Dung lượng</label>
+                        <label for="info" class="col-sm-6 control-label">Thông tin sản phẩm</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="storage" name="storage" placeholder="Nhập dung lượng sản phẩm" value="" maxlength="50" required="">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="name" class="col-sm-4 control-label">Imei</label>
-                        <div class="col-sm-12">
-                            <input type="number" class="form-control" id="imei" name="imei" placeholder="Nhập imei sản phẩm" value="" maxlength="50" required="">
-                        </div>
-                    </div> --}}
-                    <div class="form-group">
-                        <label for="info" class="col-sm-4 control-label">Thông tin sản phẩm</label>
-                        <div class="col-sm-12">
-                            <textarea id="info" name="info" required="" placeholder="Nhập thông tin sản phẩm" class="form-control"></textarea>
+                            <textarea id="info" name="info"></textarea>
                         </div>
                     </div>
                     <div class="form-group col-sm">
@@ -121,6 +103,26 @@
 @stop
 @push('scripts')
 <script type="text/javascript">
+    $(document).ready(function() {
+        $('#des').summernote({
+            placeholder: 'Nhập mô tả',
+            toolbar: [],
+        });
+        $('#info').summernote({
+            placeholder: 'Nhập thông tin sản phẩm',
+            height: 300,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture']],
+                ['view', ['fullscreen']],
+            ],
+        });
+    });
     $(function () {
         $.ajaxSetup({
             headers: {
@@ -152,9 +154,9 @@
             $('#room_id').val(data.id);
             $('#name').val(data.name);
             $('#sku').val(data.sku);
-            $('#des').val(data.des);
+            $('#des').summernote('code', data.des);
             $('#price').val(data.price);
-            $('#info').val(data.info);
+            $('#info').summernote('code', data.info);
             $('#note').val(data.note);
             $('#category_id option')
                 .removeAttr('selected')
@@ -187,11 +189,15 @@
     $('#saveBtn').click(function (e) {
         e.preventDefault();
         $(this).html('Đang lưu');
+        var mydata = new FormData($('#roomForm')[0]);
         $.ajax({
-            data: $('#roomForm').serialize(),
+            data: mydata,
             url: "{{ route('mn-product.store') }}",
             type: "POST",
+            cache: false,
             dataType: 'json',
+            processData: false,
+            contentType: false,
             success: function (data) {
                 $('#roomForm').trigger("reset");
                 $('#ajaxModel').modal('hide');

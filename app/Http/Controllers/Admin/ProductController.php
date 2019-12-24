@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\CategoryDetail;
 use Yajra\Datatables\Datatables;
+use Storage;
 
 class ProductController extends Controller
 {
@@ -27,10 +28,10 @@ class ProductController extends Controller
             return Datatables::of($dataNew)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
-                            $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editRoom" data-target="#ajaxModel">Sửa</a>';
-                            $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteRoom">Xóa</a>';
+                        $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editRoom" data-target="#ajaxModel">Sửa</a>';
+                        $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteRoom">Xóa</a>';
 
-                            return $btn;
+                        return $btn;
                     })
                     ->rawColumns(['action'])
                     ->make(true);
@@ -58,25 +59,51 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         $request->validate([
             'category_type_id' => 'min:1',
             'name' => 'required',
             'price' => 'required|numeric',
             'sku' => 'required',
         ]);
-        Product::updateOrCreate(['id' => $request->room_id],
-            [
-                'name' => $request->name,
-                'category_detail_id' => $request->category_type_id,
-                'sku' => $request->sku,
-                'des' => $request->des,
-                'price' => $request->price,
-                'info' => $request->info,
-                'img' => 'icon-phone.png',
-                'status' => 1,
-            ]);  
+
+        //upload images info
+        $dom = new \DomDocument();
+        $dom->loadHtml(mb_convert_encoding($request->info, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $count => $image) {
+           $src = $image->getAttribute('src');
+           if (preg_match('/data:image/', $src)) {
+               preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+               $mimeType = $groups['mime'];
+               $path = 'images/' . uniqid('', true) . '.' . $mimeType;
+               Storage::disk('public')->put($path, file_get_contents($src));
+               $image->removeAttribute('src');
+               $image->setAttribute('src', Storage::url($path));
+           }
+        }
+        $info = $dom->saveHTML();
+        //end upload images info
+        $query = [
+            'name' => $request->name,
+            'category_detail_id' => $request->category_type_id,
+            'sku' => $request->sku,
+            'des' => $request->des,
+            'price' => $request->price,
+            'info' => $info,
+            'status' => 1,
+        ];
+        if ($request->hasFile('image'))
+        {
+            $file_name = $request->image->getClientOriginalName();
+            $request->image->move('img/products/', $file_name);
+            $query = array_merge($query, ['img' => $file_name]);
+        }
+
+        Product::updateOrCreate(['id' => $request->room_id], $query);  
     
-        return response()->json(['success' => __('label.cinemaSave')]);
+        return response()->json(['success' => 'Đã lưu']);
     }
 
     /**
@@ -124,9 +151,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        Room::findOrFail($id)->delete();
+        Product::findOrFail($id)->delete();
         
-        return response()->json(['success' => __('label.cinemaDel')]);
+        return response()->json(['success' => 'Đã xóa']);
     }
 
     public function getCategoryChild(Request $request)

@@ -13,3 +13,7 @@ select {
 .navbar-sidebar .navbar__list li a:hover {
     color: red;
 }
+.modal {
+    overflow-y: auto;
+}
+body .popover{display:none !important; }
