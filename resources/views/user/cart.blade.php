@@ -56,13 +56,13 @@
             </div>
             @if (Cart::count() > 0)
                 <div class="continue-shopping">
-                    <strong class="fsz-20 fontbold-2">Tổng giá tiền thanh toán: <span class="clr-txt subtotal_all" data-value="39000000">{{ Cart::total(0, '', '.') }} ₫ </span>
+                    <strong class="fsz-20 fontbold-2">Tổng giá tiền thanh toán: <span class="clr-txt subtotal_all">{{ Cart::total(0, '', '.') }} ₫ </span>
                     </strong>
                 </div>
             @endif
             <div class="shp-btn col-sm-12 text-center">
-                <a href="../../index.html" class="theme-btn-2 btn"> <b> Tiếp tục mua hàng </b> </a>
-                <a href="information.html" class="theme-btn-3 btn payment-btn"> <b> Thanh toán </b> </a>
+                <a href=".." class="theme-btn-2 btn"> <b> Tiếp tục mua hàng </b> </a>
+                <a href="{{ route('payment.index') }}" class="theme-btn-3 btn payment-btn"> <b> Thanh toán </b> </a>
             </div>
         </div>
     </div>

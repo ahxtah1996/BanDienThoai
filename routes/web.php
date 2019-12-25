@@ -26,10 +26,9 @@ Route::get('guarantee', 'CategoryController@guarantee');
 Route::resource('/cart', 'CartController');
 Route::get('/scart/ajax', 'CartController@ajax');
 Route::get('product-search', 'ProductController@search');
-
 Route::resource('/product', 'ProductController');
-
 Route::get('collections/{id}', 'ProductController@collections');
+Route::resource('payment', 'PaymentController');
 
 Auth::routes();
 
