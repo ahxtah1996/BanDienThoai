@@ -46,14 +46,14 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
+{{--                     <div class="form-group">
                         <div class="col-sm-7">
                             <input type="checkbox" value="1" name="isOld" id="defaultCheck1">
                             <label for="defaultCheck1">
                                 Máy cũ
                             </label>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label for="name" class="col-sm-5 control-label">Tên loại</label>
                         <div class="col-sm-12">

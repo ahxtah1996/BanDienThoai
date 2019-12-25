@@ -108,42 +108,38 @@
 </div>
 <div class="container">
     @foreach ($categories as $category)
-        @if ($category['category'] !== null)
+        @if (count($category->products) > 0)
             <div class="h-head">
                 <div class="table bot">
                     <div class="cell">
-                        <h2 class="title">{{ $category['name'] }}</h2>
+                        <h2 class="title">{{ $category->name }}</h2>
                     </div>
                     <div class="cell text-right">
-                        <a class="smooth more" href="{{ route('product.index', ['id' => $category['id']]) }}" title="">Xem tất cả  >></a>
+                        <a class="smooth more" href="{{ route('product.index', ['id' => $category->id]) }}" title="">Xem tất cả  >></a>
                     </div>
                 </div>
             </div>
             <div class="row col-mar-0">
                 <div class="col-lg-4 hidden-xs hidden-sm hidden-md">
                     <div class="img-banner hv-over wow fadeInUp">
-                        <img src="/img/banner/{{ $category['img_home'] }}" alt="" title="" />
+                        <img src="{{ asset('/img/banner/'.$category->img_home) }}" alt="{{ $category->name }}"/>
                     </div>
                 </div>
                 <div class="col-lg-8">
                     <div class="h-pro-box">
                         <div class="row col-mar-0">
-                            @foreach ($category['category'] as $element)
-                                @foreach ($element->categoryDetail as $products)
-                                    @foreach ($products->products as $key => $product)
-                                        <div class="col-lg-3 col-sm-4 col-xs-6 wow fadeInUp" data-wow-delay="0.1s">
-                                            <div class="product v2">
-                                                <a class="img hv-scale" href="{{ route('product.show', ['product' => $product->id]) }}" title="">
-                                                    <img src="{{ asset('/img/products/'.$product->img) }}" alt="" title="" />
-                                                </a>
-                                                <div class="ct">
-                                                    <h3 class="title"><a class="smooth" href="" title="">{{ $product->name }}</a></h3>
-                                                    <div class="price">{{ number_format($product->price, '0', '', '.') }} ₫ </div>
-                                                </div>
-                                            </div>
+                            @foreach ($category->products as $product)
+                                <div class="col-lg-3 col-sm-4 col-xs-6 wow fadeInUp" data-wow-delay="0.1s">
+                                    <div class="product v2">
+                                        <a class="img hv-scale" href="{{ route('product.show', ['product' => $product->id]) }}" title="">
+                                            <img src="{{ asset('/img/products/'.$product->img) }}" alt="" title="" />
+                                        </a>
+                                        <div class="ct">
+                                            <h3 class="title"><a class="smooth" href="" title="">{{ $product->name }}</a></h3>
+                                            <div class="price">{{ number_format($product->price, '0', '', '.') }} ₫ </div>
                                         </div>
-                                    @endforeach
-                                @endforeach
+                                    </div>
+                                </div>
                             @endforeach
                         </div>
                     </div>

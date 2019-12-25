@@ -30,6 +30,7 @@ class ProductController extends Controller
                     ->addColumn('action', function($row){
                         $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editRoom" data-target="#ajaxModel">Sửa</a>';
                         $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteRoom">Xóa</a>';
+                        $btn = $btn . ' <a href="' . url('manager/mn-store/'.$row->id) . '" data-toggle="tooltip" data-original-title="Detail" class="btn btn-success btn-sm">Kho</a>';
 
                         return $btn;
                     })
@@ -59,7 +60,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
         $request->validate([
             'category_type_id' => 'min:1',
             'name' => 'required',
@@ -96,7 +96,7 @@ class ProductController extends Controller
         ];
         if ($request->hasFile('image'))
         {
-            $file_name = $request->image->getClientOriginalName();
+            $file_name = time() . $request->image->getClientOriginalName();
             $request->image->move('img/products/', $file_name);
             $query = array_merge($query, ['img' => $file_name]);
         }

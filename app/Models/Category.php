@@ -49,6 +49,11 @@ class Category extends Model
      */
     public function categoryDetail()
     {
-        return $this->hasMany('App\Models\CategoryDetail');
+        return $this->hasMany('App\Models\CategoryDetail', 'category_id', 'id');
+    }
+
+    public function child()
+    {
+        return $this->hasMany( 'App\Models\Category', 'parent_category_id', 'id');
     }
 }

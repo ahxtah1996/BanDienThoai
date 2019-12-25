@@ -58,24 +58,4 @@ class CategoryRepository extends RepositoryAbstract implements CategoryRepositor
     {
         return $this->model->whereNull('parent_category_id');
     }
-
-    /**
-     * 
-     */
-    public function home($categories)
-    {
-        $arrFilter = [];
-        foreach ($categories as $key => $category) {
-            $arrFilter[$key]['id'] = $category->id;
-            $arrFilter[$key]['name'] = $category->name;
-            $arrFilter[$key]['img_home'] = $category->img_home;
-            $arrCategory = Category::where('parent_category_id', $category->id)->get();
-            if (count($arrCategory) == 0) {
-                $arrCategory = null;
-            } 
-            $arrFilter[$key]['category'] = $arrCategory;
-        }
-
-        return $arrFilter;
-    }
 }

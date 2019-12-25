@@ -41,4 +41,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'manager', 'middleware' => 'ad
     Route::get('mn-categoryDetail-index', 'CategoryController@categoryDetail')->name('mn-categoryDetail-index');
     Route::get('getCategoryChild', 'ProductController@getCategoryChild')->name('getCategoryChild');
     Route::get('getCategoryType', 'ProductController@getCategoryType')->name('getCategoryType');
+    Route::resource('mn-store', 'StoreController');
+    Route::resource('mn-color', 'ColorController');
 });

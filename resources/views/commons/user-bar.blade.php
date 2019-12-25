@@ -8,17 +8,17 @@
                     <div class="main-nav collapse" id="ct">
                         <ul>
                             @foreach ($categoriesBar as $category)
-                                <li>
-                                    <a class="smooth" href="{{ route('product.index', ['id' => $category['id']]) }}" title="">
-                                        <div class="t-icon">
-                                            <img src="/img/icon/{{ $category['icon'] }}" alt="">
-                                            <img src="/img/icon/{{ $category['icon'] }}" alt="">
-                                        </div>
-                                        <span>{{ $category['name'] }}</span>
-                                    </a>
-                                    <div class="submenu">
-                                        <div class="row item">
-                                            @if (!empty($category['chil']))
+                                @if (!empty($category['chil']))
+                                    <li>
+                                        <a class="smooth" href="{{ route('product.index', ['id' => $category['id']]) }}" title="">
+                                            <div class="t-icon">
+                                                <img src="/img/icon/{{ $category['icon'] }}" alt="">
+                                                <img src="/img/icon/{{ $category['icon'] }}" alt="">
+                                            </div>
+                                            <span>{{ $category['name'] }}</span>
+                                        </a>
+                                        <div class="submenu">
+                                            <div class="row item">
                                                 @if (!empty($category['chil']))
                                                     @foreach ($category['chil'] as $data)
                                                         <div class="col-lg-3">
@@ -33,11 +33,11 @@
                                                         </div>
                                                     @endforeach
                                                 @endif
-                                            @endif
-                                            <img class="groupdrop-banner-pos" src="/img/banner/{{ $category['banner'] }}" alt="">
+                                                <img class="groupdrop-banner-pos" src="/img/banner/{{ $category['banner'] }}" alt="">
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                @endif
                             @endforeach
                         </ul>
                     </div>

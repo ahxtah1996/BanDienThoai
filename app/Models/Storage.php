@@ -43,4 +43,9 @@ class Storage extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function color()
+    {
+        return $this->belongsTo('App\Models\Color');
+    }
 }

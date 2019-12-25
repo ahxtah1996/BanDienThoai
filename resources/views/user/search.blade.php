@@ -25,7 +25,7 @@
                     @foreach ($products as $row)
                         <div class="col-lg-3 col-sm-4 col-xs-6 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                             <div class="product v2">
-                                <a class="img hv-scale" href="" title="">
+                                <a class="img hv-scale" href="{{ route('product.show', ['product' => $row->id]) }}" title="">
                                     <img src="{{ asset('/img/products/'.$row->img) }}" alt="" title="">
                                 </a>
                                 <div class="ct">

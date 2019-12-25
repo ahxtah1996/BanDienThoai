@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\Category\CategoryRepositoryInterface;
+use App\Models\Category;
+use App\Models\CategoryDetail;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
@@ -32,7 +35,11 @@ class HomeController extends Controller
     public function index()
     {
         $categories = $this->categoryRepository->parent_category()->get();
-        $categories = $this->categoryRepository->home($categories);
+        foreach ($categories as $value) {
+            $childId = Category::where('parent_category_id', $value->id)->pluck('id');
+            $detailId = CategoryDetail::whereIn('category_id', $childId)->pluck('id');
+            $value->products = Product::whereIn('category_detail_id', $detailId)->orderBy('updated_at', 'desc')->limit(8)->get();
+        }
 
         return view('user.index', compact('categories'));
     }
