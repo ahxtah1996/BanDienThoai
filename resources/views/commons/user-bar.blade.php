@@ -62,9 +62,9 @@
                                     <li class="sub">
                                         <a href="/service" class="smooth" title="">Dịch vụ</a>
                                     </li>
-                                    <li class="sub">
+                                    {{-- <li class="sub">
                                         <a href="/contact" class="smooth" title="">Liên hệ</a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </nav>
                         </div>

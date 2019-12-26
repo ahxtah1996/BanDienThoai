@@ -17,7 +17,7 @@
             <div class="col-md-12">
                 <div class="single">
                     <h1 class="s-title">Bảo hành</h1>
-                    <time><i class="fa fa-calendar"></i>Thứ tư, 17/07/2019</time>
+                    {{-- <time><i class="fa fa-calendar"></i>Thứ tư, 17/07/2019</time>
                     <div class="fv-content">
                         <h2 style="text-align: center;"><span style="color: #ff0000;"><strong></strong></span></h2>
                         <p><span style="color: #ff0000;"><strong><img src="storage/service/upload-1447770515-apple-care.png" width="Auto" height="Auto" caption="false" />CHÍNH SÁCH BẢO HÀNH VÀ ĐỔI TRẢ SẢN PHẨM</strong></span></p>
@@ -100,7 +100,7 @@
                                 <li><a href="https://plus.google.com/share?url=https://ducanhstore.com/pages/bao-hanh" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" class="instagram"><i class="fa fa-google-plus"></i></a></li>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
