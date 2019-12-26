@@ -4,7 +4,7 @@
             <div class="row row-ibl mid">
                 <div class="col-lg-3 col-md-2 col-sm-3 col-xs-8 logo-header">
                     <a class="logo" href="/" title="">
-                        <img class="main-logo" src="/img/logo/logo.png" alt="" title=""/>
+                        <img class="main-logo" src="{{ asset('/img/logo/logo.png') }}" alt="" title=""/>
                     </a>
                 </div>
                 <div class="col-lg-6 col-md-9 col-sm-7 col-xs-12 search-form">
@@ -13,10 +13,10 @@
                         <form class="search-fr" action="{{ asset('product-search') }}" method="get">
                             <input type="text" name="q" placeholder="Tìm sản phẩm...">
                             <div class="select" name="category">
-                                <select class="non-select2">
-                                    <option>Tất cả</option>
+                                <select class="non-select2" name="searchType">
+                                    <option value="">Tất cả</option>
                                     @foreach ($categoriesBar as $row)
-                                        <option>{{ $row['name'] }}</option>
+                                        <option value="{{ $row['id'] }}">{{ $row['name'] }}</option>
                                     @endforeach
                                 </select>
                             </div>

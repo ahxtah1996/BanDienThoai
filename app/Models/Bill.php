@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Bill extends Model
 {
     /**
      * The attributes name of table.
      *
      * @var string
      */
-    protected $table = 'products';
+    protected $table = 'bills';
 
     /**
      * The attributes that aren't mass assignable.
@@ -20,8 +20,8 @@ class Product extends Model
      */
     protected $guarded = [
         'id',
-        // 'created_at',
-        // 'updated_at'
+        'created_at',
+        'updated_at'
     ];
 
     /**
@@ -40,20 +40,7 @@ class Product extends Model
      * @var array
      */
     protected $hidden = [
-        // 'created_at',
+        'created_at',
         'updated_at'
     ];
-
-    /**
-     * relationship with category detail
-     */
-    public function categoryDetail()
-    {
-        return $this->belongsTo('App\Models\CategoryDetail');
-    }
-
-    public function color()
-    {
-        return $this->hasMany('App\Models\Color');
-    }
 }

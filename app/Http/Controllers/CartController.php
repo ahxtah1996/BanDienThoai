@@ -15,7 +15,12 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('user.cart');
+        $carts = Cart::content();
+        foreach ($carts as $key => $value) {
+            $value->img = Product::findOrFail($value->id)->img;
+        }
+
+        return view('user.cart', compact('carts'));
     }
 
     public function ajax(Request $request)
@@ -42,8 +47,6 @@ class CartController extends Controller
                 # code...
                 break;
         }
-
-        // return response()->json($a);
     }
 
     /**

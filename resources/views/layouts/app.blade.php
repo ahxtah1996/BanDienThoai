@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/css/flag-icon.min.css">
-    <link rel="icon" href="/img/logo/logo-duc-anh.png">
+    <link rel="icon" href="{{ asset('/img/logo/logo-bi.png') }}">
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="/themes/default/css/slick.css" type="text/css" rel="stylesheet" />
@@ -22,6 +22,7 @@
 
     <link href="/themes/default/assets/css/custom.css" type="text/css" rel="stylesheet" />
     <link href="/themes/default/assets/css/cart.css" type="text/css" rel="stylesheet" />
+    <link href="/themes/default/css/custom.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
     @include('commons.user-header')
@@ -62,15 +63,16 @@
 
     <script src="{{ asset('themes/default/assets/js/script2.js') }}" defer></script>
     <script src="{{ asset('assets/js/cart.js') }}"></script>
+    <script src="{{ asset('assets/js/storage.js') }}"></script>
 
     <script>
-        // $(document).ready(function() {
-            // $('li.sub a').each(function() {
-                // if($(this).attr('href') === CNV.categoryActive) {
-                    // $(this).parent().addClass('active');
-                // }
-            // });
-        // }); 
+        $(document).ready(function() {
+            $('li.sub a').each(function() {
+                if($(this).attr('href') === window.location.pathname) {
+                    $(this).parent().addClass('active');
+                }
+            });
+        }); 
         if ($('#back-to-top').length) {
             var scrollTrigger = 50, // px
             backToTop = function () {

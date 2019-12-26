@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Cart;
+use App\Models\Product;
+use App\Models\Bill;
+use App\Models\BillDetail;
 
 class PaymentController extends Controller
 {
@@ -77,7 +81,12 @@ class PaymentController extends Controller
             'DAKNONG' => 'Đắk Nông',
             'HAUGIANG' => 'Hậu Giang',
         ];
-        return view('user.payment', compact('maps'));
+        $carts = Cart::content();
+        foreach ($carts as $key => $value) {
+            $value->img = Product::findOrFail($value->id)->img;
+        }
+
+        return view('user.payment', compact('maps', 'carts'));
     }
 
     /**
@@ -98,7 +107,7 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Bill::
     }
 
     /**

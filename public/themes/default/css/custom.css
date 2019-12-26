@@ -1,0 +1,92 @@
+.fs-dticolor {
+    display: table;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.fs-dticolor ul {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.fs-dticolor ul li {
+    display: inline-block;
+    margin-right: 13px;
+    padding: 3px 0;
+}
+.fs-dticolor-img li {
+    margin-right: 5px !important;
+}
+.fs-dticolor ul li span.active {
+    -webkit-box-shadow: 0 0 0 2px #ff8383;
+    -moz-box-shadow: 0 0 0 2px #ff8383;
+    box-shadow: 0 0 0 2px #ff8383;
+}
+.fs-dticolor ul li span {
+    border: 2px solid #efefef;
+}
+.fs-dticolor ul li span {
+    border: 2px solid #efefef;
+}
+.fs-dticolor ul li span {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: inline-block;
+    border: 2px solid #fff;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+}
+.fs-dticolor-img li span {
+    text-align: center;
+    width: 50px !important;
+    height: auto !important;
+    border: none !important;
+    background: transparent !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
+.fs-dticolor-img li span.active b {
+    display: inline-block;
+    padding: 2px;
+    text-align: center;
+    border-radius: 2px;
+    background-color: #ffffff;
+    border: solid 1px #c10000;
+}
+.fs-dticolor-img li span b img {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+.fs-dticolor-img li span i {
+    display: block;
+    font-weight: normal !important;
+    font-style: normal !important;
+    font-size: 12px;
+    text-align: center;
+    color: #818181;
+    padding: 3px 0;
+    white-space: nowrap;
+}
+.fs-tspris>li {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+    margin-right: 6px;
+}
+.fs-tspris>li.active>a {
+    background-color: #fff8f8;
+    border: solid 1px #ed939e;
+}
+.fs-tspris>li>a {
+    padding: 3px 10px;
+    text-align: center;
+    display: block;
+    border: 1px solid #d1d1d1;
+    background: #f5f5f5;
+    border-radius: 2px;
+    position: relative;
+    color: #3d3d3d;
+}

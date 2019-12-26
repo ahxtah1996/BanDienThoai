@@ -12,8 +12,8 @@
                                     <li>
                                         <a class="smooth" href="{{ route('product.index', ['id' => $category['id']]) }}" title="">
                                             <div class="t-icon">
-                                                <img src="/img/icon/{{ $category['icon'] }}" alt="">
-                                                <img src="/img/icon/{{ $category['icon'] }}" alt="">
+                                                <img src="{{ asset('/img/icon/' . $category['icon']) }}" alt="">
+                                                <img src="{{ asset('/img/icon/2' . $category['icon']) }}" alt="">
                                             </div>
                                             <span>{{ $category['name'] }}</span>
                                         </a>
@@ -50,19 +50,19 @@
                         <div class="col-lg-8">
                             <nav class="nav-sections">
                                 <ul>
-                                    <li class="sub active">
+                                    <li class="sub">
                                         <a href="/" class="smooth" title="">Trang chủ</a>
                                     </li>
-                                    <li class="sub ">
+                                    <li class="sub">
                                         <a href="/introduce" class="smooth" title="">Giới thiệu</a>
                                     </li>
-                                    <li class="sub ">
+                                    <li class="sub">
                                         <a href="/guarantee" class="smooth" title="">Bảo hành</a>
                                     </li>
-                                    <li class="sub ">
+                                    <li class="sub">
                                         <a href="/service" class="smooth" title="">Dịch vụ</a>
                                     </li>
-                                    <li class="sub ">
+                                    <li class="sub">
                                         <a href="/contact" class="smooth" title="">Liên hệ</a>
                                     </li>
                                 </ul>
@@ -70,7 +70,7 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="hotline">
-                                <i class="fa fa-phone" aria-hidden="true"></i> Hotline: <a class="smooth" href="tel:0917973355" title="">0917.973.355</a>
+                                <i class="fa fa-phone" aria-hidden="true"></i> Hotline: <a class="smooth" href="tel:0937973355" title="">0937.973.355</a>
                             </div>
                         </div>
                     </div>

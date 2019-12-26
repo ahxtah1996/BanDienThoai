@@ -21,11 +21,11 @@
                                 <td colspan="5" class="text-center no_result">Không có sản phẩm trong giỏ hàng</td>
                             </tr>
                         @else 
-                            @foreach(Cart::content() as $row)
+                            @foreach($carts as $row)
                                 <tr>
                                     <td class="image">
                                         <div class="white-bg">
-                                            <a class="media-link" href="{{ route('product.show', ['product' => $row->id]) }}"><img width="100px" src="{{ asset('img/iphone/iphone-x-1080x1080.png') }}" alt=""></a>
+                                            <a class="media-link" href="{{ route('product.show', ['product' => $row->id]) }}"><img width="100px" src="{{ asset('img/products/'.$row->img) }}" alt=""></a>
                                         </div>
                                     </td>
                                     <td class="description">

@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0049)https://ducanhstore.com/cart/checkout/information -->
 <html class="no-js" lang="en">
-<!--<![endif]-->
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,95 +9,44 @@
     <title>Thông tin khách hàng</title>
     <meta name="description" content="Shop của Bi">
 
-    <link rel="stylesheet" href="{{ asset('themes/payment/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('themes/payment/plugins.css') }}">
-    <link rel="stylesheet" href="{{ asset('themes/payment/toastr.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('themes/payment/sweetalert2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('themes/payment/flag-icon.min.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('/backend/css/plugins.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/css/flag-icon.min.css">
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="{{ asset('themes/payment/style.css') }}">
-    <link rel="icon" href="https://ducanhstore.com/storage/logo/logo-duc-anh.png">
+    <link rel="icon" href="{{ asset('/img/logo/logo-bi.png') }}">
 
-    <script>
-        ! function(f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-            n = f.fbq = function() {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = '2.0';
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '466501683916970');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=466501683916970&ev=PageView&noscript=1" /></noscript>
     <!-- End Facebook Pixel Code -->
-
-    <!-- Your customer chat code -->
-    <style type="text/css">
-        .jqstooltip {
-            width: auto !important;
-            height: auto !important;
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            visibility: hidden;
-            background: #000000;
-            color: white;
-            font-size: 11px;
-            text-align: left;
-            white-space: nowrap;
-            padding: 5px;
-            z-index: 10000;
-        }
-
-        .jqsfield {
-            color: white;
-            font: 10px arial, san serif;
-            text-align: left;
-        }
-    </style>
 </head>
 
 <body cz-shortcut-listen="true">
-    <div class="fb-customerchat" attribution="setup_tool" page_id="1138394829527912" logged_in_greeting="Hi !, Tiệm mình đang SALE Airpods 2 chỉ 3550k!" logged_out_greeting="Hi !, Tiệm mình đang SALE Airpods 2 chỉ 3550k!">
-    </div>
-
-
     <div class="container">
         <!-- Giao hàng -->
         <div class="checkout clearfix">
             <div class="right">
                 <table class="cko-table">
                     <tbody>
-                        <tr>
-                            <td width="20%">
-                                <div class="img">
-                                    <img src="./Thông tin khách hàng - Đức Anh Store_files/iphone1.png" alt="">
-                                    <span>1</span>
-                                </div>
-                            </td>
-                            <td style="font-weight: 500;">
-                                <strong>iPhone 11 mới 100%</strong> <br>
-                                <div style="margin-top: 10px; clear: both;"></div>
-
-                            </td>
-
-                            <td width="30%" class="text-right">18.900.000 ₫</td>
-                        </tr>
+                        @foreach($carts as $row)
+                            <tr>
+                                <td width="20%">
+                                    <div class="img">
+                                        <img src="{{ asset('img/products/'.$row->img) }}" alt="">
+                                        <span>{{ $row->qty }}</span>
+                                    </div>
+                                </td>
+                                <td style="font-weight: 500;">
+                                    <strong>{{ $row->name }}</strong> <br>
+                                    <div style="margin-top: 10px; clear: both;"></div>
+                                </td>
+                                <td width="30%" class="text-right">{{ number_format($row->price * $row->qty, 0, '', '.') }} ₫</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
-
-
 
                 <hr>
                 <table class="tol-table">
@@ -107,7 +54,7 @@
                         <tr>
                             <td>Tạm tính</td>
                             <td class="text-right">
-                                <span>18.900.000 ₫</span>
+                                <span>{{ Cart::total(0, '', '.') }} ₫</span>
                             </td>
                         </tr>
                     </tbody>
@@ -115,8 +62,8 @@
                         <tr>
                             <td>Tổng giá tiền thanh toán</td>
                             <td class="text-right">
-                                <!-- <span class="payment-due-currency">VND</span> -->
-                                <span class="payment-due-price">18.900.000 ₫</span>
+                                <span class="payment-due-currency">VND</span>
+                                <span class="payment-due-price">{{ Cart::total(0, '', '.') }} ₫</span>
                             </td>
                         </tr>
                     </tfoot>
@@ -126,29 +73,26 @@
 
                 <div class="header hidden-sm hidden-xs">
                     <h1 class="logo">
-                        <a href="https://ducanhstore.com/">
-                            <img style="max-width: 100%" src="./Thông tin khách hàng - Đức Anh Store_files/logo2_2.jpg" alt="">
+                        <a href="/">
+                            <img style="max-width: 100%" src="{{ asset('/img/logo/logo.png') }}" alt="">
                         </a>
                     </h1>
                     <ul class="breadcrumb">
-                        <li><a href="https://ducanhstore.com/">Trang chủ</a></li>
+                        <li><a href="/">Trang chủ</a></li>
                         <li>
-                            <a href="https://ducanhstore.com/cart/checkout/products">Giỏ hàng</a>
+                            <a href="{{ route('cart.index') }}">Giỏ hàng</a>
                         </li>
                         <li>
-                            <a href="https://ducanhstore.com/cart/checkout/information">Thông tin khách hàng</a>
+                            <a href="{{ route('payment.index') }}">Thông tin khách hàng</a>
                         </li>
                     </ul>
                 </div>
 
-                <h2>
-                    Thông tin khách hàng
-                </h2>
-
+                <h2>Thông tin khách hàng</h2>
 
                 <div>
-                    <form action="https://ducanhstore.com/cart/checkout/information" method="POST">
-                        <input type="hidden" name="_token" value="dzwq6Qm25g2wXyKDUQ53VRKfniwlRHjfCAxADfYN">
+                    <form action="{{ route('payment.store') }}" method="POST">
+                        @csrf
 
                         <div class="row">
                             <div class="col-md-6 form-group">
@@ -186,17 +130,17 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <div class="form_group" data-target="province" data-name="province" data-district="#payment_district" data-value="">
-                                    	<select class="form-control" name="province">
-                                    		@foreach ($maps as $key => $value)
-                                            	<option value="{{ $key }}">{{ $value }}</option>
+                                        <select class="form-control" name="province">
+                                            @foreach ($maps as $key => $value)
+                                                <option value="{{ $key }}">{{ $value }}</option>
                                             @endforeach
                                         </select></div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form_group district-select" id="payment_district" data-value="">
-                                    	<select class="form-control" name="district">
-                                            <option value="Huyện Ba Vì">Huyện Ba Vì</option>
-                                        </select></div>
+                                        <select class="form-control" name="district">
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -214,11 +158,11 @@
 
                         <div class="form-group text-right btn-checkout-block">
                             <button type="submit" class="btn-success btn btn-checkout"> <b>
-                                    <i class="fa fa-check"></i> Hoàn tất thanh toán </b> </button>
+                                <i class="fa fa-check"></i> Hoàn tất thanh toán </b>
+                            </button>
                         </div>
                     </form>
                 </div>
-
 
                 <div class="back">
                     <a href="{{ route('cart.index') }}">
@@ -226,21 +170,21 @@
                     </a>
                 </div>
             </div>
-
         </div>
         <!-- End -->
 
     </div>
 
     <script src="{{ asset('assets/js/const.js') }}"></script>
-    <script src="{{ asset('themes/payment/jquery.min.js') }}"></script>
-    <script src="{{ asset('themes/payment/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('themes/payment/plugins.js') }}"></script>
-    <script src="{{ asset('themes/payment/toastr.min.js') }}"></script>
-    <script src="{{ asset('themes/payment/sweetalert2.min.js') }}"></script>
-    <script src="{{ asset('themes/payment/jquery.form.min.js') }}"></script>
-    <script src="{{ asset('themes/payment/vi.js') }}"></script>
-    <script src="{{ asset('themes/payment/main.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/vendor/plugins.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+    <script src="{{ asset('assets/js/language/vi.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+
     <script>
         $(document).ready(function() {
             $('.information').first().slideDown('fast');
@@ -252,7 +196,6 @@
             });
         });
     </script>
-
 </body>
 
 </html>

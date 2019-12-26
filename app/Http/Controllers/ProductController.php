@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\Color;
+use App\Models\Storage;
 use App\Models\CategoryDetail;
 use App\Repositories\Product\ProductRepositoryInterface;
+use DB;
 
 class ProductController extends Controller
 {
@@ -70,8 +74,12 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
+        $idColor = Color::where('product_id', $product->id)->pluck('id');
+        $count = count(Storage::whereIn('color_id', $idColor)->get());
+        $idLike = CategoryDetail::where('category_id', $product->categoryDetail->category_id)->pluck('id');
+        $productLike = Product::whereIn('category_detail_id', $idLike)->limit(10)->get();
 
-        return view('user.product.detail', compact('product'));
+        return view('user.product.detail', compact('product', 'count', 'productLike'));
     }
 
     /**
@@ -133,11 +141,41 @@ class ProductController extends Controller
                 foreach ($searchValues as $value) {
                     $q->orWhere('name', 'like', "%{$value}%");
                 }
-            })->get();
+            });
         } else {
-            $products = Product::where('name', 'like', '%'.$request->q.'%')->get();
+            $products = Product::where('name', 'like', '%'.$request->q.'%');
         }
+        if ($request->searchType !== null)
+        {
+            $id = Category::where('parent_category_id', $request->searchType)->pluck('id');
+            $category_detail_id = CategoryDetail::whereIn('category_id', $id)->pluck('id');
+            $products = $products->whereIn('category_detail_id', $category_detail_id);
+        }
+        $products = $products->get();
         
         return view('user.search', compact('products'));
+    }
+
+    public function ajax(Request $request)
+    {
+        $action = $request->action;
+        $id = $request->id;
+
+        switch ($action) {
+            case 'count_qty_of_storage':
+                $data = Storage::where('color_id', $id)->get('storage');
+                $data2 = Storage::where('color_id', $id)
+                    ->select('storage', DB::raw('count(*) as total'))
+                    ->groupBy('storage')
+                    ->get();
+                return response()->json([
+                    'count' => count($data),
+                    'storages' => $data2,
+                ]);
+                break;
+            default:
+                # code...
+                break;
+        }
     }
 }

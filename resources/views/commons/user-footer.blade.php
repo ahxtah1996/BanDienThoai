@@ -26,20 +26,22 @@
                     <li><a class="smooth" href="#" title=""><strong>Website:</strong> https://tiemcuabi.com</a></li>
                 </ul>
             </div>
-            {{-- <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp info-contact" data-wow-delay="0.2s">
+            <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp info-contact" data-wow-delay="0.2s">
                 <h4 class="f-title">Fanpage</h4>
-                <div class="fanpage embed-responsive embed-responsive-16by9"><iframe width="430" height="331" style="border: none; overflow: hidden;" src="https://www.facebook.com/plugins/page.php?href=http%3A%2F%2Facebook.com%2Fducanhretail&amp;tabs=timeline&amp;width=400&amp;height=308&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId" scrolling="no" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
-            </div> --}}
+                <div class="fanpage embed-responsive embed-responsive-16by9">
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FTiemcuaBi%2F&tabs=272&width=430&height=331&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=314721562753963" width="430" height="331" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                </div>
+            </div>
         </div>
         <div class="foot">
             <div class="container">
                 <div class="row">
                     <span class="f-left">Copyright © 2019 Tiệm của Bi. All Rights Reserved. </span>
                     <div class="social">
-                    <a class="smooth icon-facebook f" href="/iadmin/widget/8/facebook.com/ducanhretail" target="_blank" rel="noopener noreferrer"><span class="fa fa-facebook">&nbsp;</span></a>
+                    <a class="smooth icon-facebook f" href="https://www.facebook.com/TiemcuaBi/" target="_blank" rel="noopener noreferrer"><span class="fa fa-facebook">&nbsp;</span></a>
                     <a class="smooth icon-twitter t" href="#" target="_blank" rel="noopener noreferrer"><span class="fa fa-twitter">&nbsp;</span></a>
                     <a class="smooth icon-dribbble d" href="#" target="_blank" rel="noopener noreferrer"> <span class="fa fa-dribbble">&nbsp;</span></a>
-                    <a class="smooth icon-vimeo v" href="https://www.instagram.com/ducanhstore/" target="_blank" rel="noopener noreferrer"><span class="fa fa-instagram">&nbsp;</span></a> <a class="smooth icon-pinterest p" href="#" target="_blank" rel="noopener noreferrer"><span class="fa fa-pinterest-p">&nbsp;</span></a>
+                    <a class="smooth icon-vimeo v" href="https://www.instagram.com/vlt.vuong/" target="_blank" rel="noopener noreferrer"><span class="fa fa-instagram">&nbsp;</span></a> <a class="smooth icon-pinterest p" href="#" target="_blank" rel="noopener noreferrer"><span class="fa fa-pinterest-p">&nbsp;</span></a>
                 </div>
                 </div>
             </div>

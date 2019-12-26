@@ -25,8 +25,27 @@
                                         <img src="{{ asset('img/products/'.$product->img) }}" alt="">
                                     </a>
                                 </div>
+                                @foreach ($product->color as $color)
+                                    <div class="item">
+                                        <a class="img" title="" rel="gal">
+                                            <img src="{{ asset('img/products/'.$color->image) }}" alt="">
+                                        </a>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
+                        @if (count($product->color) > 0)
+                            <div class="pro-thumb">
+                                <div class="slick-slide img">
+                                    <img src="{{ asset('img/products/'.$product->img) }}" alt="">
+                                </div>
+                                @foreach ($product->color as $color)
+                                    <div class="slick-slide img">
+                                        <img src="{{ asset('img/products/'.$color->image) }}" alt="">
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
                     </div>
                     <div class="col-md-6">
                         <div class="pro-detail">
@@ -49,6 +68,24 @@
                                 <div class="clearfix"></div>
                                 <a href="javascript:void(0);" onclick="Cart.addToCart({{ $product->id }});" class="btn-muahang">Mua hàng</a>
                             </div>
+                            <h1 class="title">Kho: <span class="count-storage">{{ $count }}</span></h1>
+                            <div class="fs-dticolor fs-dticolor-img">
+                                <ul>
+                                    @foreach ($product->color as $color)
+                                        <li>
+                                            <span class="choose-color" data-id="{{ $color->id }}" title="{{ $color->color }}">
+                                                <b>
+                                                    <img class="lazy" src="{{ asset('img/products/'.$color->image) }}" style="display: inline-block;">
+                                                </b>
+                                                <i>{{ $color->color }}</i>
+                                            </span>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <ul class="fs-tspris">
+                                {{--  --}}
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -70,111 +107,23 @@
                     <div class="fb-comments" data-href="" data-width="100%" data-numposts="5"></div>
                 </div> --}}
                 <div class="pro-related">
-                    <div class="slick-slide">
-                        <div class="product v2" style="margin-bottom: 0;">
-                            <a class="img hv-scale" href="" title="">
-                                <img src="{{ asset('img/iphone/11-pro/iphone1.png') }}" alt="" title="" />
-                            </a>
-                            <div class="ct">
-                                <h3 class="title">
-                                    <a class="smooth" href="" title="">iPhone 11 mới 100%</a>
-                                </h3>
-                                <!-- <div class="old-price">7.000.000 vnđ </div> -->
-                                <div class="price">18.900.000 ₫ </div>
+                    @foreach ($productLike as $row)
+                        <div class="slick-slide">
+                            <div class="product v2" style="margin-bottom: 0;">
+                                <a class="img hv-scale" href="" title="">
+                                    <img src="{{ asset('img/products/' . $row->img) }}" alt="" title="" />
+                                </a>
+                                <div class="ct">
+                                    <h3 class="title">
+                                        <a class="smooth" href="" title="">{{ $row->name }}</a>
+                                    </h3>
+                                    <!-- <div class="old-price">7.000.000 vnđ </div> -->
+                                    <div class="price">{{ number_format($row->price, 0, '', '.') }} ₫</div>
+                                </div>
+                                <!-- <div class="sale">-15%</div> -->
                             </div>
-                            <!-- <div class="sale">-15%</div> -->
                         </div>
-                    </div>
-                    <div class="slick-slide">
-                        <div class="product v2" style="margin-bottom: 0;">
-                            <a class="img hv-scale" href="" title="">
-                                <img src="{{ asset('img/iphone/11-pro/69957979-2672636159414126-7845837542397050880-n.jpg') }}" alt="" title="" />
-                            </a>
-                            <div class="ct">
-                                <h3 class="title">
-                                    <a class="smooth" href="" title="">iPhone 11 Pro Max mới 100%</a>
-                                </h3>
-                                <!-- <div class="old-price">7.000.000 vnđ </div> -->
-                                <div class="price">28.900.000 ₫ </div>
-                            </div>
-                            <!-- <div class="sale">-15%</div> -->
-                        </div>
-                    </div>
-                    <div class="slick-slide">
-                        <div class="product v2" style="margin-bottom: 0;">
-                            <a class="img hv-scale" href="" title="">
-                                <img src="{{ asset('img/iphone/11-pro/699579') }}79-2672636159414126-7845837542397050880-n.jpg" alt="" title="" />
-                            </a>
-                            <div class="ct">
-                                <h3 class="title">
-                                    <a class="smooth" href="" title="">iPhone 11 Pro mới 100%</a>
-                                </h3>
-                                <!-- <div class="old-price">7.000.000 vnđ </div> -->
-                                <div class="price">27.000.000 ₫ </div>
-                            </div>
-                            <!-- <div class="sale">-15%</div> -->
-                        </div>
-                    </div>
-                    <div class="slick-slide">
-                        <div class="product v2" style="margin-bottom: 0;">
-                            <a class="img hv-scale" href="" title="">
-                                <img src="{{ asset('img/iphone/iphone-x-1080x1080.png') }}" alt="" title="" />
-                            </a>
-                            <div class="ct">
-                                <h3 class="title">
-                                    <a class="smooth" href="" title="">iPhone X 256Gb New</a>
-                                </h3>
-                                <!-- <div class="old-price">7.000.000 vnđ </div> -->
-                                <div class="price">22.500.000 ₫ </div>
-                            </div>
-                            <!-- <div class="sale">-15%</div> -->
-                        </div>
-                    </div>
-                    <div class="slick-slide">
-                        <div class="product v2" style="margin-bottom: 0;">
-                            <a class="img hv-scale" href="" title="">
-                                <img src="{{ asset('img/iphone/iphone-x-1080x1080.png') }}" alt="" title="" />
-                            </a>
-                            <div class="ct">
-                                <h3 class="title">
-                                    <a class="smooth" href="" title="">iPhone X 64Gb New</a>
-                                </h3>
-                                <!-- <div class="old-price">7.000.000 vnđ </div> -->
-                                <div class="price">19.500.000 ₫ </div>
-                            </div>
-                            <!-- <div class="sale">-15%</div> -->
-                        </div>
-                    </div>
-                    <div class="slick-slide">
-                        <div class="product v2" style="margin-bottom: 0;">
-                            <a class="img hv-scale" href="" title="">
-                                <img src="{{ asset('img/iphone/xsmax3mauvuong.jpg') }}" alt="" title="" />
-                            </a>
-                            <div class="ct">
-                                <h3 class="title">
-                                    <a class="smooth" href="" title="">iPhone Xs Max 64GB New</a>
-                                </h3>
-                                <!-- <div class="old-price">7.000.000 vnđ </div> -->
-                                <div class="price">24.500.000 ₫ </div>
-                            </div>
-                            <!-- <div class="sale">-15%</div> -->
-                        </div>
-                    </div>
-                    <div class="slick-slide">
-                        <div class="product v2" style="margin-bottom: 0;">
-                            <a class="img hv-scale" href="" title="">
-                                <img src="{{ asset('img/iphone/xsmax3mauvuong.jpg') }}" alt="" title="" />
-                            </a>
-                            <div class="ct">
-                                <h3 class="title">
-                                    <a class="smooth" href="" title="">iPhone Xs Max 256GB New</a>
-                                </h3>
-                                <!-- <div class="old-price">7.000.000 vnđ </div> -->
-                                <div class="price">27.000.000 ₫ </div>
-                            </div>
-                            <!-- <div class="sale">-15%</div> -->
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

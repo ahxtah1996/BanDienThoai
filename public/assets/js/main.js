@@ -404,8 +404,27 @@ var number_format = function(money, currency){
 };
 
 $(document).ready(function() {
-    reloadDistrictsAndProvinces();
-    autoReloadDistrictsAndProvinces();
+    $.get(CNV.baseUrl + '/themes/payment/vietnam_provinces_cities.json', function (data) {
+        var districts = data['HANOI'].cities;
+        var html = '';
+        Object.entries(districts).forEach(([key, val]) => {
+            html += `<option value="`+key+`">`+val+`</option>`;
+        });
+        $('select[name=district]').html(html);
+    });
+    // $.get(CNV.baseUrl + '/themes/payment/vietnam_provinces.json', function (data) {
+    // });
+    $('select[name=province]').on('change', function() {
+        var province = $(this).val(),
+            html = '';
+        $.get(CNV.baseUrl + '/themes/payment/vietnam_provinces_cities.json', function (data) {
+            var districts = data[province].cities;
+            Object.entries(districts).forEach(([key, val]) => {
+                html += `<option value="` + key + `">` + val + `</option>`;
+            });
+            $('select[name=district]').html(html);
+        });
+    })
 });
 
 var toggleThisElement = function(element) {
