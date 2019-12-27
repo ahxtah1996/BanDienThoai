@@ -15,14 +15,14 @@
     <link rel="icon" href="{{ asset('/img/logo/logo-bi.png') }}">
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="/themes/default/css/slick.css" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('/themes/default/css/slick.css') }}" type="text/css" rel="stylesheet" />
  
-    <link href="/themes/default/css/reset.css" type="text/css" rel="stylesheet" />
-    <link href="/themes/default/css/style.css" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('/themes/default/css/reset.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('/themes/default/css/style.css') }}" type="text/css" rel="stylesheet" />
 
-    <link href="/themes/default/assets/css/custom.css" type="text/css" rel="stylesheet" />
-    <link href="/themes/default/assets/css/cart.css" type="text/css" rel="stylesheet" />
-    <link href="/themes/default/css/custom.css" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('/themes/default/assets/css/custom.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('/themes/default/assets/css/cart.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('/themes/default/css/custom.css') }}" type="text/css" rel="stylesheet" />
 </head>
 <body>
     @include('commons.user-header')

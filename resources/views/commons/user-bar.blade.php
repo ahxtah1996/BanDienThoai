@@ -33,7 +33,7 @@
                                                         </div>
                                                     @endforeach
                                                 @endif
-                                                <img class="groupdrop-banner-pos" src="/img/banner/{{ $category['banner'] }}" alt="">
+                                                <img class="groupdrop-banner-pos" src="{{ asset('/img/banner/' . $category['banner']) }}" alt="">
                                             </div>
                                         </div>
                                     </li>

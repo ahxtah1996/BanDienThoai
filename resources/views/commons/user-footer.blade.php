@@ -10,11 +10,11 @@
             <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp info-link" data-wow-delay="0.2s">
                 <h4 class="f-title">Điều khoản</h4>
                 <ul>
-                    <li><a class="smooth" href="/pages/bao-hanh">Chính sách bảo hành</a></li>
-                    <li><a class="smooth" href="/pages/chinh-sach-bao-mat-thong-tin">Chính sách bảo mật</a></li>
-                    <li><a class="smooth" href="/pages/goi-bao-hanh-vip">Gói Bảo Hành VIP</a></li>
-                    <li><a class="smooth" href="/collections/san-pham">Danh mục sản phẩm</a></li>
-                    <li><a class="smooth" href="/pages/ho-tro-tra-gop">Hỗ trợ trả góp</a></li>
+                    <li><a class="smooth" href="#">Chính sách bảo hành</a></li>
+                    <li><a class="smooth" href="#">Chính sách bảo mật</a></li>
+                    <li><a class="smooth" href="#">Gói Bảo Hành VIP</a></li>
+                    <li><a class="smooth" href="#">Danh mục sản phẩm</a></li>
+                    <li><a class="smooth" href="#">Hỗ trợ trả góp</a></li>
                 </ul>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp info-link" data-wow-delay="0.2s">

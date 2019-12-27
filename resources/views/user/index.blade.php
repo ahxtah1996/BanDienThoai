@@ -35,7 +35,7 @@
                                                     @endforeach
                                                 @endif
                                             @endif
-                                            <img class="groupdrop-banner-pos" src="/img/banner/{{ $category['banner'] }}" alt="">
+                                            <img class="groupdrop-banner-pos" src="{{ asset('/img/banner/' . $category['banner']) }}" alt="">
                                         </div>
                                     </div>
                                 </li>
@@ -49,35 +49,35 @@
                     <div class="item slick-slide">
                         <div class="img">
                             <a>
-                                <img src="/img/macbook/macbookedit.png" alt="">
+                                <img src="{{ asset('/img/macbook/macbookedit.png') }}" alt="">
                             </a>
                         </div>
                     </div>
                     <div class="item slick-slide">
                         <div class="img">
                             <a>
-                                <img src="/img/banner/banner-iphone-used.png" alt="">
+                                <img src="{{ asset('/img/banner/banner-iphone-used.png') }}" alt="">
                             </a>
                         </div>
                     </div>
                     <div class="item slick-slide">
                         <div class="img">
                             <a>
-                                <img src="/img/banner/ipad2019.png" alt="">
+                                <img src="{{ asset('/img/banner/ipad2019.png') }}" alt="">
                             </a>
                         </div>
                     </div>
                     <div class="item slick-slide">
                         <div class="img">
                             <a>
-                                <img src="/img/banner/phukienchinhang.png" alt="">
+                                <img src="{{ asset('/img/banner/phukienchinhang.png') }}" alt="">
                             </a>
                         </div>
                     </div>
                     <div class="item slick-slide">
                         <div class="img">
                             <a>
-                                <img src="/img/banner/applewwatchbanner.png" alt="">
+                                <img src="{{ asset('/img/banner/applewwatchbanner.png') }}" alt="">
                             </a>
                         </div>
                     </div>
